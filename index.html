@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saideep × Norway</title>
+  <meta name="description" content="Saideep Vangala — Senior Product Designer actively relocating to Norway." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-primary: #FDFDFF;
+      --bg-secondary: #F0F4FF;
+      --text-primary: #0A0A14;
+      --text-secondary: rgba(10,10,20,0.75);
+      --text-tertiary: rgba(10,10,20,0.55);
+      --card-bg: #F7F7F7;
+      --tag-bg: #EBEBEB;
+    }
+
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 120px;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .nav-logo {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+    }
+
+    .nav-logo .logo-short { display: none; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--text-primary);
+    }
+
+    .nav-links a.active {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .nav-links a:hover {
+      border-bottom: 1px dotted rgba(10,10,20,0.55);
+    }
+
+    .nav-links a.norway-link {
+      color: #EF2B2D;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 160px 120px 120px;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .hero-text { flex: 1; }
+
+    .hero h1 {
+      font-size: 56px;
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+
+    .hero-sub {
+      font-size: 14px;
+      color: var(--text-tertiary);
+      line-height: 1.6;
+    }
+
+    .hero-prev {
+      font-size: 14px;
+      color: var(--text-tertiary);
+      margin-top: 32px;
+    }
+
+    .hero-prev strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .hero-photo {
+      width: 28%;
+      flex-shrink: 0;
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--card-bg);
+      aspect-ratio: 4/3.5;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      filter: grayscale(100%);
+      display: block;
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 80px 120px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 40px;
+    }
+
+    /* ── WORK GRID ── */
+    .work-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .work-card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: row;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .work-card:hover { opacity: 0.85; }
+
+    .work-card-image {
+      width: 42%;
+      flex-shrink: 0;
+      overflow: hidden;
+      background: #e8e8e8;
+    }
+
+    .work-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .work-card-content {
+      flex: 1;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .work-tag {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--text-secondary);
+      background: var(--tag-bg);
+      padding: 4px 10px;
+      border-radius: 100px;
+      display: inline-block;
+    }
+
+    .work-card-body { display: flex; flex-direction: column; gap: 8px; }
+
+    .work-card-body h3 {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+    }
+
+    .work-card-body p {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .work-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px;
+      border: 1px dashed var(--text-primary);
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--text-primary);
+      background: transparent;
+      cursor: pointer;
+      transition: background 0.15s;
+      text-decoration: none;
+    }
+
+    .work-btn:hover { background: rgba(10,10,20,0.04); }
+
+    .work-btn svg {
+      width: 14px; height: 14px;
+      flex-shrink: 0;
+    }
+
+    /* ── WHY NORWAY ── */
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .why-card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      padding: 32px;
+    }
+
+    .why-card.full { grid-column: 1 / -1; }
+
+    .why-card .icon { font-size: 24px; margin-bottom: 16px; }
+
+    .why-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    .why-card p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* ── JOURNEY ── */
+    .journey-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .journey-card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .journey-card-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      display: block;
+      background: #ddd;
+    }
+
+    .journey-card-body {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .journey-tag {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .journey-card-body h3 {
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--text-primary);
+    }
+
+    .journey-card-body p {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .language-bar-wrap { margin-top: 8px; }
+
+    .language-bar {
+      height: 4px;
+      background: rgba(10,10,20,0.12);
+      border-radius: 100px;
+      overflow: hidden;
+    }
+
+    .language-bar-fill {
+      height: 100%;
+      width: 15%;
+      background: var(--text-primary);
+      border-radius: 100px;
+    }
+
+    .language-label {
+      font-size: 11px;
+      color: var(--text-tertiary);
+      margin-top: 6px;
+    }
+
+    /* ── CONNECT ── */
+    .connect {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 80px 120px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .connect h2 {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .connect-sub {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 520px;
+      margin-top: -16px;
+    }
+
+    .connect-links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .connect-links a {
+      font-size: 14px;
+      color: var(--text-primary);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .connect-social {
+      display: flex;
+      gap: 24px;
+    }
+
+    .connect-social a {
+      font-size: 14px;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 24px 120px;
+      font-size: 12px;
+      color: var(--text-tertiary);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      nav { padding: 20px 40px; }
+      .hero { padding: 80px 40px 60px; }
+      .hero h1 { font-size: 40px; }
+      .hero-photo { width: 36%; }
+      .section { padding: 60px 40px; }
+      .work-grid { grid-template-columns: 1fr; gap: 24px; }
+      .why-grid { grid-template-columns: 1fr; }
+      .why-card.full { grid-column: 1; }
+      .journey-grid { grid-template-columns: 1fr 1fr; }
+      .connect { padding: 60px 40px; }
+      footer { padding: 24px 40px; }
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 16px 24px; flex-wrap: wrap; gap: 12px; }
+      .nav-logo .logo-full { display: none; }
+      .nav-logo .logo-short { display: inline; }
+      .nav-links { gap: 16px; }
+      .hero { padding: 60px 24px 40px; flex-direction: column-reverse; }
+      .hero-photo { width: 100%; aspect-ratio: 16/9; }
+      .hero h1 { font-size: 30px; }
+      .section { padding: 40px 24px; }
+      .work-card { flex-direction: column; }
+      .work-card-image { width: 100%; height: 180px; }
+      .journey-grid { grid-template-columns: 1fr; }
+      .connect { padding: 40px 24px; }
+      footer { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="https://saideep.design">
+      <span class="logo-full">Saideep</span>
+      <span class="logo-short">S</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="https://saideep.design">Home</a></li>
+      <li><a href="https://saideep.design/about">About Me</a></li>
+      <li><a href="https://drive.google.com/file/d/1HiEhL3yhojKXlpeW-WOKGvESby1ViaPg/view" target="_blank" rel="noopener">Resume ↗</a></li>
+      <li><a href="#why-norway" class="norway-link active">Why Norway</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-text">
+      <h1>Hello there.<br />I'm Saideep, a Product Designer<br />who wants to work in Norway.</h1>
+      <p class="hero-sub">Designing intuitive interfaces for complex workflows.</p>
+      <p class="hero-sub">Exploring AI-assisted design.</p>
+      <p class="hero-prev">Previously at&nbsp; <strong>Oracle, JP Morgan Chase, Teradata</strong></p>
+    </div>
+    <div class="hero-photo">
+      <img src="./DP.png" alt="Saideep Vangala" />
+    </div>
+  </div>
+
+  <!-- UX WORK -->
+  <div class="section">
+    <h2 class="section-title">UX Work</h2>
+    <div class="work-grid">
+
+      <a class="work-card" href="https://www.figma.com/proto/15N6r7ua9zx3kTx4AIGn7R/case-study---Active-Query-Monitoring---AQM?node-id=31-2897&scaling=scale-down-width&content-scaling=fixed&page-id=1%3A10&hide-ui=1" target="_blank" rel="noopener">
+        <div class="work-card-image">
+          <img src="./Thumbnail%20-%20AQM.png" alt="Teradata Active Query Monitoring" />
+        </div>
+        <div class="work-card-content">
+          <span class="work-tag">Teradata</span>
+          <div class="work-card-body">
+            <h3>Active Query Monitoring</h3>
+            <p>A unified interface for DataBase Admins to monitor queries across the organization.</p>
+          </div>
+          <span class="work-btn">View Case Study <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></span>
+        </div>
+      </a>
+
+      <a class="work-card" href="https://www.figma.com/proto/bgmjLXt54IvHeegfUHhZ1A/Case-study---Pyro---Praja-RM-tool?node-id=28-75&scaling=scale-down-width&content-scaling=fixed&page-id=21%3A2" target="_blank" rel="noopener">
+        <div class="work-card-image">
+          <img src="./Thumbnail%20-Pyro%20-%20RM.png" alt="Pyro AI" />
+        </div>
+        <div class="work-card-content">
+          <span class="work-tag">Pyro AI</span>
+          <div class="work-card-body">
+            <h3>Lead Calling Business Process</h3>
+            <p>Built a complete design system from tokens and components to product flows, grounded in a bespoke brand identity.</p>
+          </div>
+          <span class="work-btn">View Case Study <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></span>
+        </div>
+      </a>
+
+      <a class="work-card" href="https://www.figma.com/proto/kyYMKYUiEWqZeBJ1d8bh70/For-bahance?page-id=23%3A17189&node-id=149-2050&scaling=scale-down-width&content-scaling=fixed&hide-ui=1" target="_blank" rel="noopener">
+        <div class="work-card-image">
+          <img src="./Thumbnail%20-%20Custom%20email%20domain.png" alt="InvoiceCloud" />
+        </div>
+        <div class="work-card-content">
+          <span class="work-tag">InvoiceCloud</span>
+          <div class="work-card-body">
+            <h3>Custom Domain Management</h3>
+            <p>To send trustworthy emails, to increase direct payments from users.</p>
+          </div>
+          <span class="work-btn">View Case Study <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></span>
+        </div>
+      </a>
+
+      <a class="work-card" href="https://www.figma.com/proto/kyYMKYUiEWqZeBJ1d8bh70/Portfolio---behance?page-id=0%3A1&node-id=214-20147&scaling=scale-down-width&content-scaling=fixed&hide-ui=1" target="_blank" rel="noopener">
+        <div class="work-card-image">
+          <img src="./Thumbnail%20-%20Cash%20Flow.png" alt="Oracle" />
+        </div>
+        <div class="work-card-content">
+          <span class="work-tag">Oracle</span>
+          <div class="work-card-body">
+            <h3>Cash Flow in Primavera Unifier</h3>
+            <p>Efficient way to track construction projects, while providing value to all types of users who interact with cash flow.</p>
+          </div>
+          <span class="work-btn">View Case Study <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- WHY NORWAY -->
+  <div class="section" id="why-norway">
+    <h2 class="section-title">Why Norway 🇳🇴</h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="icon">🏛️</div>
+        <h3>Society that invests in its people</h3>
+        <p>I could earn high salaries in places like Dubai. But what draws me is a society that genuinely reinvests in its citizens — where high taxes translate into real, visible value: healthcare, education, and trust. That exchange matters to me deeply.</p>
+      </div>
+      <div class="why-card">
+        <div class="icon">📊</div>
+        <h3>Human Development Index</h3>
+        <p>Norway consistently ranks at the top of the HDI — not by accident, but by design. Strong social welfare, exceptional education, and workforce productivity that signals something most countries are still figuring out.</p>
+      </div>
+      <div class="why-card full">
+        <div class="icon">🛢️</div>
+        <h3>The Sovereign Wealth Fund — a masterclass in long-term thinking</h3>
+        <p>The way Norway manages its oil fund is something I genuinely admire. Rather than spending windfall wealth, Norway built one of the largest sovereign wealth funds in the world and invested it in the future. As a designer who thinks in systems and long-term outcomes, this kind of institutional foresight resonates with how I work.</p>
+      </div>
+      <div class="why-card">
+        <div class="icon">⚖️</div>
+        <h3>Work-life balance that's real</h3>
+        <p>Scandinavian work culture is built around trust, flat hierarchies, and depth over busyness. I'm looking for a culture where thoughtful work is valued — and Norway leads the world in exactly that.</p>
+      </div>
+      <div class="why-card">
+        <div class="icon">🤝</div>
+        <h3>Flat hierarchies, meaningful work</h3>
+        <p>Coming from years of enterprise design across JP Morgan Chase, Teradata, and Oracle — I've collaborated across teams and cultures. Norway's collaborative, low-ego work culture is the environment I want to grow in.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- NORWEGIAN JOURNEY -->
+  <div class="section">
+    <h2 class="section-title">My Norwegian Journey</h2>
+    <div class="journey-grid">
+
+      <div class="journey-card">
+        <div class="journey-card-body">
+          <p class="journey-tag">Language</p>
+          <h3>Learning Norsk</h3>
+          <p>Currently at A1 — actively building every day. Norwegian is becoming a regular part of my routine.</p>
+          <div class="language-bar-wrap">
+            <div class="language-bar"><div class="language-bar-fill"></div></div>
+            <p class="language-label">A1 — Beginner, actively progressing</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="journey-card">
+        <img class="journey-card-img" src="./fanto-pivi.jpg" alt="Fantorangen" />
+        <div class="journey-card-body">
+          <p class="journey-tag">NRK Super</p>
+          <h3>Fantorangen</h3>
+          <p>I watch Fantorangen regularly to pick up natural Norwegian pronunciation and cadence.</p>
+        </div>
+      </div>
+
+      <div class="journey-card">
+        <img class="journey-card-img" src="./currently%20watching.jpg" alt="Krokkaklubben" />
+        <div class="journey-card-body">
+          <p class="journey-tag">NRK Super</p>
+          <h3>Krokkaklubben</h3>
+          <p>Another NRK favourite — a window into what Norwegian culture feels like from the inside.</p>
+        </div>
+      </div>
+
+      <div class="journey-card">
+        <img class="journey-card-img" src="./ragnarok.jpg" alt="Ragnarok" />
+        <div class="journey-card-body">
+          <p class="journey-tag">Netflix</p>
+          <h3>Ragnarok</h3>
+          <p>My entry point — watched in Norwegian to understand the rhythm of the language and everyday life.</p>
+        </div>
+      </div>
+
+      <div class="journey-card">
+        <div class="journey-card-img" style="background:#2b2b2b; display:flex; align-items:center; justify-content:center; font-size:36px;">🔍</div>
+        <div class="journey-card-body">
+          <p class="journey-tag">Netflix</p>
+          <h3>Detektiv Ole</h3>
+          <p>Norwegian detective series — helped me understand language, humour, and social dynamics.</p>
+        </div>
+      </div>
+
+      <div class="journey-card">
+        <img class="journey-card-img" src="./yourway2norway.png" alt="Welcome to Norway" />
+        <div class="journey-card-body">
+          <p class="journey-tag">YouTube</p>
+          <h3>"Welcome to Norway"</h3>
+          <p>Practical, honest content about what actually living in Norway looks and feels like day-to-day.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CONNECT -->
+  <div class="connect">
+    <h2>Let's Connect</h2>
+    <p class="connect-sub">Building scalable, data-heavy software experiences. Let's make something meaningful together.</p>
+    <div class="connect-links">
+      <a href="mailto:saideepdesign@gmail.com">saideepdesign@gmail.com</a>
+      <div class="connect-social">
+        <a href="https://www.linkedin.com/in/saideep-vangala/" target="_blank" rel="noopener">Linkedin</a>
+        <a href="https://medium.com/@saideepdesign" target="_blank" rel="noopener">Medium</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>2026@saideep - Designed and built with intent</footer>
+
+</body>
+</html>
