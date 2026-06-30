@@ -1,0 +1,523 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Why Norway â€” Saideep</title>
+  <meta name="description" content="Why Saideep Vangala wants to work and live in Norway." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-primary: #FDFDFF;
+      --text-primary: #0A0A14;
+      --text-secondary: rgba(10,10,20,0.75);
+      --text-tertiary: rgba(10,10,20,0.55);
+      --card-bg: #F7F7F7;
+      --tag-bg: #EBEBEB;
+      --border: #E8E8E4;
+    }
+
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* â”€â”€ NAV â”€â”€ */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 120px;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .nav-logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: baseline;
+      gap: 3px;
+      font-family: Georgia, serif;
+    }
+
+    .nav-logo .logo-no {
+      font-size: 12px;
+      font-weight: 400;
+      opacity: 0.6;
+      letter-spacing: 0.03em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--text-primary);
+      opacity: 0.55;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+
+    .nav-links a.active {
+      opacity: 1;
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 13px;
+      text-decoration-color: var(--text-primary);
+    }
+
+    .nav-links a:hover:not(.active) {
+      opacity: 1;
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 13px;
+      text-decoration-color: var(--text-primary);
+    }
+
+    .nav-links a.why-norway:hover {
+      background: linear-gradient(140deg, #E42F28 58%, rgba(255,255,255,0.7) 68%, #205FAF 78%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      opacity: 1;
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 13px;
+      text-decoration-color: var(--text-primary);
+    }
+
+    /* â”€â”€ PAGE â”€â”€ */
+    .page {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 80px 120px;
+      display: flex;
+      flex-direction: column;
+      gap: 160px;
+    }
+
+    .section-title {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 24px;
+    }
+
+    /* â”€â”€ HERO â”€â”€ */
+    .hero-block { display: flex; flex-direction: column; gap: 16px; }
+
+    .hero-block h1 {
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      max-width: 720px;
+    }
+
+    .hero-block p {
+      font-size: 16px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      max-width: 620px;
+    }
+
+    /* â”€â”€ REASON CARDS â”€â”€ */
+    .reason-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .reason-card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .reason-card.full { grid-column: 1 / -1; }
+
+    .reason-card .icon {
+      font-size: 24px;
+    }
+
+    .reason-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+    }
+
+    .reason-card p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* â”€â”€ STAT ROW â”€â”€ */
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .stat-card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .stat-number {
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    .stat-label {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* â”€â”€ CULTURE GRID â”€â”€ */
+    .culture-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .culture-card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .culture-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      display: block;
+      background: #ddd;
+    }
+
+    .culture-body {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .culture-tag {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .culture-body h3 {
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .culture-body p {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* language progress bar */
+    .lang-bar-wrap { margin-top: 4px; }
+
+    .lang-bar {
+      height: 4px;
+      background: rgba(10,10,20,0.12);
+      border-radius: 100px;
+      overflow: hidden;
+    }
+
+    .lang-bar-fill {
+      height: 100%;
+      width: 20%;
+      background: var(--text-primary);
+      border-radius: 100px;
+    }
+
+    .lang-label {
+      font-size: 11px;
+      color: var(--text-tertiary);
+      margin-top: 6px;
+    }
+
+    /* â”€â”€ CONNECT â”€â”€ */
+    .connect {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      padding-bottom: 0;
+    }
+
+    .connect h2 {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .connect-sub {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 520px;
+      margin-top: -16px;
+    }
+
+    .connect-links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .connect-links a {
+      font-size: 14px;
+      color: var(--text-primary);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .connect-social {
+      display: flex;
+      gap: 24px;
+    }
+
+    .connect-social a {
+      font-size: 14px;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    /* â”€â”€ FOOTER â”€â”€ */
+    footer {
+      text-align: center;
+      padding: 24px 120px;
+      font-size: 12px;
+      color: var(--text-tertiary);
+    }
+
+    /* â”€â”€ RESPONSIVE â”€â”€ */
+    @media (max-width: 960px) {
+      nav { padding: 20px 40px; }
+      .page { padding: 60px 40px; gap: 60px; }
+      .hero-block h1 { font-size: 36px; }
+      .reason-grid { grid-template-columns: 1fr; }
+      .reason-card.full { grid-column: 1; }
+      .stat-row { grid-template-columns: 1fr 1fr; }
+      .culture-grid { grid-template-columns: 1fr 1fr; }
+      footer { padding: 24px 40px; }
+    }
+
+    @media (max-width: 600px) {
+      nav { display: none; }
+
+      .mobile-nav {
+        display: flex;
+        position: fixed;
+        bottom: 0; left: 0; right: 0;
+        z-index: 100;
+        background: var(--bg-primary);
+        border-top: 1px solid var(--border);
+        padding: 12px 0 env(safe-area-inset-bottom, 12px);
+        justify-content: space-around;
+        align-items: center;
+      }
+
+      .mobile-nav a {
+        font-size: 12px;
+        font-weight: 400;
+        color: var(--text-primary);
+        text-decoration: none;
+      }
+
+      .mobile-nav a.active {
+        text-decoration: underline;
+        text-decoration-style: solid;
+        text-underline-offset: 3px;
+      }
+
+      body { padding-bottom: 72px; }
+
+      .page { padding: 40px 24px; gap: 48px; }
+      .hero-block h1 { font-size: 28px; }
+      .stat-row { grid-template-columns: 1fr; }
+      .culture-grid { grid-template-columns: 1fr; }
+      footer { padding: 16px 24px; }
+    }
+
+    @media (min-width: 601px) {
+      .mobile-nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV (desktop) -->
+  <nav>
+    <a class="nav-logo" href="./index.html">Saideep<span class="logo-no">NO</span></a>
+    <ul class="nav-links">
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./aboutme.html">About Me</a></li>
+      <li><a href="./whynorway.html" class="active why-norway">Why Norway</a></li>
+      <li><a href="https://drive.google.com/file/d/1HiEhL3yhojKXlpeW-WOKGvESby1ViaPg/view" target="_blank" rel="noopener">Resume <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-left:2px;opacity:0.55"><path d="M19 19H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></a></li>
+    </ul>
+  </nav>
+
+  <!-- NAV (mobile bottom bar) -->
+  <nav class="mobile-nav">
+    <a href="./index.html">Home</a>
+    <a href="./aboutme.html">About Me</a>
+    <a href="./whynorway.html" class="active">Why Norway</a>
+    <a href="https://drive.google.com/file/d/1HiEhL3yhojKXlpeW-WOKGvESby1ViaPg/view" target="_blank" rel="noopener">Resume <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-left:2px;opacity:0.55"><path d="M19 19H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></a>
+  </nav>
+
+  <div class="page">
+
+    <!-- HERO -->
+    <div class="hero-block">
+      <h1>Norway is not just a destination.<br />It's a deliberate choice.</h1>
+    </div>
+
+    <!-- WHY NORWAY: VALUES -->
+    <div>
+      <h2 class="section-title">A society built on trust</h2>
+      <div class="reason-grid">
+        <div class="reason-card">
+          <div class="icon">ðŸ›ï¸</div>
+          <h3>Societal values that align with mine</h3>
+        </div>
+        <div class="reason-card">
+          <div class="icon">ðŸ“ˆ</div>
+          <h3>The world's largest sovereign wealth fund</h3>
+        </div>
+        <div class="reason-card full" style="padding:0; overflow:hidden; flex-direction:row; align-items:stretch;">
+          <img src="images/Norway related/HDI-2023-1.png" alt="HDI 2023 Leaderboard" style="width:320px;flex-shrink:0;object-fit:cover;" />
+          <div style="padding:32px; display:flex; flex-direction:column; gap:12px; justify-content:center;">
+            <h3>Human Development Index â€” #2 globally</h3>
+            <p style="font-size:13px; color:var(--text-secondary);">UNDP Human Development Report 2025 â€” score 0.970</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <div>
+      <h2 class="section-title">By the numbers</h2>
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="stat-number">#2</div>
+          <div class="stat-label">UN Human Development Index (2023)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">$1.6T</div>
+          <div class="stat-label">Sovereign wealth fund â€” largest in the world</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">7.3</div>
+          <div class="stat-label">World Happiness Report score</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NORWAY STATS INFOGRAPHIC -->
+    <div>
+      <h2 class="section-title">Norway â€” Leading the Nordics</h2>
+      <div style="border-radius: 8px; overflow: hidden; background: var(--card-bg);">
+        <img src="images/Norway related/norway stats-big4.png" alt="Norway leading the Nordics â€” key stats" style="width:100%; display:block;" />
+      </div>
+    </div>
+
+    <!-- CULTURE EFFORT -->
+    <div>
+      <h2 class="section-title">My effort to understand Norwegian culture</h2>
+      <div class="culture-grid">
+
+        <div class="culture-card">
+          <img class="culture-img" src="images/Norway related/NRK Super.png" alt="NRK Super" />
+          <div class="culture-body">
+            <p class="culture-tag">NRK Super</p>
+            <h3>Krokkaklubben & Fantorangen</h3>
+          </div>
+        </div>
+
+        <div class="culture-card">
+          <img class="culture-img" src="images/Norway related/On Netflix.png" alt="Netflix Norway" />
+          <div class="culture-body">
+            <p class="culture-tag">Netflix Norway</p>
+            <h3>Troll & Detective Hole</h3>
+          </div>
+        </div>
+
+        <div class="culture-card">
+          <img class="culture-img" src="images/Norway related/yourway2norway.png" alt="YourWay2Norway" />
+          <div class="culture-body">
+            <p class="culture-tag">YouTube</p>
+            <h3>YourWay2Norway</h3>
+          </div>
+        </div>
+
+        <div class="culture-card">
+          <div class="culture-body" style="padding: 24px; justify-content: center; min-height: 160px;">
+            <p class="culture-tag">Language</p>
+            <h3>Norsk â€” A1 Level</h3>
+            <div class="lang-bar-wrap">
+              <div class="lang-bar"><div class="lang-bar-fill"></div></div>
+              <p class="lang-label">Aiming for A2 by end of 2026.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CONNECT -->
+    <div class="connect">
+      <h2>Let's Connect</h2>
+      <p class="connect-sub">Building scalable, data-heavy software experiences. Let's make something meaningful together.</p>
+      <div class="connect-links">
+        <a href="mailto:saideepdesign@gmail.com">saideepdesign@gmail.com</a>
+        <div class="connect-social">
+          <a href="https://www.linkedin.com/in/saideep-vangala/" target="_blank" rel="noopener">Linkedin</a>
+          <a href="https://medium.com/@saideepdesign" target="_blank" rel="noopener">Medium</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>2026@saideep - Designed and built with intent</footer>
+
+</body>
+</html>

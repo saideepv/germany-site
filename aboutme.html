@@ -1,0 +1,489 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Me â€” Saideep</title>
+  <meta name="description" content="About Saideep Vangala â€” Senior Product Designer." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-primary: #FDFDFF;
+      --text-primary: #0A0A14;
+      --text-secondary: rgba(10,10,20,0.75);
+      --text-tertiary: rgba(10,10,20,0.55);
+      --card-bg: #F7F7F7;
+      --border: #E8E8E4;
+    }
+
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* â”€â”€ NAV â”€â”€ */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 120px;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .nav-logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: baseline;
+      gap: 3px;
+      font-family: Georgia, serif;
+    }
+
+    .nav-logo .logo-no {
+      font-size: 12px;
+      font-weight: 400;
+      opacity: 0.6;
+      letter-spacing: 0.03em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--text-primary);
+      opacity: 0.55;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+
+    .nav-links a.active {
+      opacity: 1;
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 13px;
+      text-decoration-color: var(--text-primary);
+    }
+
+    .nav-links a:hover:not(.active) {
+      opacity: 1;
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 13px;
+      text-decoration-color: var(--text-primary);
+    }
+
+    .nav-links a.why-norway:hover {
+      background: linear-gradient(140deg, #E42F28 58%, rgba(255,255,255,0.7) 68%, #205FAF 78%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      opacity: 1;
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 13px;
+      text-decoration-color: var(--text-primary);
+    }
+
+    /* â”€â”€ SECTIONS â”€â”€ */
+    .page {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 80px 120px;
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 24px;
+    }
+
+    /* â”€â”€ TEACHING â”€â”€ */
+    .teaching-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .teaching-item { display: flex; flex-direction: column; gap: 8px; }
+
+    .video-wrap {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #000;
+      aspect-ratio: 16/9;
+    }
+
+    .video-wrap video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .play-btn {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.3);
+      transition: background 0.2s;
+    }
+
+    .play-btn:hover { background: rgba(0,0,0,0.45); }
+
+    .play-btn svg {
+      width: 48px; height: 48px;
+      fill: white;
+      opacity: 0.9;
+    }
+
+    .designerrs-wrap {
+      border-radius: 8px;
+      overflow: hidden;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+    }
+
+    .designerrs-wrap img {
+      max-width: 70%;
+      max-height: 70%;
+      object-fit: contain;
+    }
+
+    .item-label {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      line-height: 1.5;
+    }
+
+    /* â”€â”€ READING â”€â”€ */
+    .reading-section {
+      background: var(--bg-primary);
+      padding: 32px 0;
+    }
+
+    .reading-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .book-item { display: flex; flex-direction: column; gap: 8px; }
+
+    .book-cover {
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--card-bg);
+      aspect-ratio: 3/4;
+      max-height: 280px;
+    }
+
+    .book-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .book-tag {
+      font-size: 12px;
+      color: var(--text-tertiary);
+    }
+
+    .book-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    /* â”€â”€ HOBBIES â”€â”€ */
+    .hobbies-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .hobby-item { display: flex; flex-direction: column; gap: 8px; }
+
+    .hobby-img {
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--card-bg);
+      aspect-ratio: 4/3;
+      max-height: 220px;
+    }
+
+    .hobby-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hobby-tag {
+      font-size: 12px;
+      color: var(--text-tertiary);
+    }
+
+    .hobby-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    /* â”€â”€ CONNECT â”€â”€ */
+    .connect {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      padding-bottom: 0;
+    }
+
+    .connect h2 {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .connect-sub {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 520px;
+      margin-top: -16px;
+    }
+
+    .connect-links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .connect-links a {
+      font-size: 14px;
+      color: var(--text-primary);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .connect-social {
+      display: flex;
+      gap: 24px;
+    }
+
+    .connect-social a {
+      font-size: 14px;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    /* â”€â”€ FOOTER â”€â”€ */
+    footer {
+      text-align: center;
+      padding: 24px 120px;
+      font-size: 12px;
+      color: var(--text-tertiary);
+    }
+
+    /* â”€â”€ RESPONSIVE â”€â”€ */
+    @media (max-width: 960px) {
+      nav { padding: 20px 40px; }
+      .page { padding: 60px 40px; gap: 60px; }
+      .teaching-grid { grid-template-columns: 1fr; }
+      .reading-grid { grid-template-columns: 1fr 1fr; }
+      .hobbies-grid { grid-template-columns: 1fr 1fr; }
+      footer { padding: 24px 40px; }
+    }
+
+    @media (max-width: 600px) {
+      nav { display: none; }
+
+      .mobile-nav {
+        display: flex;
+        position: fixed;
+        bottom: 0; left: 0; right: 0;
+        z-index: 100;
+        background: var(--bg-primary);
+        border-top: 1px solid #E8E8E4;
+        padding: 12px 0 env(safe-area-inset-bottom, 12px);
+        justify-content: space-around;
+        align-items: center;
+      }
+
+      .mobile-nav a {
+        font-size: 12px;
+        font-weight: 400;
+        color: var(--text-primary);
+        text-decoration: none;
+      }
+
+      .mobile-nav a.active {
+        text-decoration: underline;
+        text-decoration-style: solid;
+        text-underline-offset: 3px;
+      }
+
+      body { padding-bottom: 72px; }
+
+      .page { padding: 40px 24px; gap: 48px; }
+      .reading-grid { grid-template-columns: 1fr; }
+      .hobbies-grid { grid-template-columns: 1fr; }
+      footer { padding: 16px 24px; }
+    }
+
+    @media (min-width: 601px) {
+      .mobile-nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV (desktop) -->
+  <nav>
+    <a class="nav-logo" href="./index.html">Saideep<span class="logo-no">NO</span></a>
+    <ul class="nav-links">
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./aboutme.html" class="active">About Me</a></li>
+      <li><a href="./whynorway.html" class="why-norway">Why Norway</a></li>
+      <li><a href="https://drive.google.com/file/d/1HiEhL3yhojKXlpeW-WOKGvESby1ViaPg/view" target="_blank" rel="noopener">Resume <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-left:2px;opacity:0.55"><path d="M19 19H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></a></li>
+    </ul>
+  </nav>
+
+  <!-- NAV (mobile bottom bar) -->
+  <nav class="mobile-nav">
+    <a href="./index.html">Home</a>
+    <a href="./aboutme.html" class="active">About Me</a>
+    <a href="./whynorway.html">Why Norway</a>
+    <a href="https://drive.google.com/file/d/1HiEhL3yhojKXlpeW-WOKGvESby1ViaPg/view" target="_blank" rel="noopener">Resume <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-left:2px;opacity:0.55"><path d="M19 19H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></a>
+  </nav>
+
+  <div class="page">
+
+    <!-- TEACHING -->
+    <div>
+      <h2 class="section-title">I love teaching</h2>
+      <div class="teaching-grid">
+        <div class="teaching-item">
+          <a class="video-wrap" href="https://youtu.be/XAiQ-iBJ-Jc" target="_blank" rel="noopener">
+            <img src="https://img.youtube.com/vi/XAiQ-iBJ-Jc/maxresdefault.jpg" alt="Teach For India" style="width:100%;height:100%;object-fit:cover;display:block;" />
+            <div class="play-btn">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </a>
+          <p class="item-label">Music Classes for school children via NGO <img src="images/teach%20for%20India%20Logo.png" alt="Teach For India" style="height:16px;vertical-align:middle;margin-left:4px;" /></p>
+        </div>
+        <div class="teaching-item">
+          <div class="designerrs-wrap">
+            <img src="images/designerrsLogo-new.png" alt="Designerrs Academy" />
+          </div>
+          <p class="item-label">Design cohorts for students exploring design as a career</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CURRENTLY READING -->
+    <div class="reading-section">
+      <h2 class="section-title">Currently Reading</h2>
+      <div class="reading-grid">
+        <div class="book-item">
+          <div class="book-cover">
+            <img src="images/AI%20Snake%20Oil.png" alt="AI Snake Oil" />
+          </div>
+          <p class="book-tag">On AI</p>
+          <p class="book-title">AI snake oil, by Sayash Kapoor</p>
+        </div>
+        <div class="book-item">
+          <div class="book-cover">
+            <img src="images/Managing%20Oneself.jpg" alt="Managing Oneself" />
+          </div>
+          <p class="book-tag">On Improving</p>
+          <p class="book-title">Managing one self, by Peter Drucker</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- HOBBIES -->
+    <div>
+      <h2 class="section-title">Trying To Be a Better Version At</h2>
+      <div class="hobbies-grid">
+        <div class="hobby-item">
+          <div class="hobby-img">
+            <img src="images/Hobby%203.jpg" alt="Dog" />
+          </div>
+          <p class="hobby-tag">Dog Parent</p>
+          <p class="hobby-title">Taking care of my pet</p>
+        </div>
+        <div class="hobby-item">
+          <div class="hobby-img">
+            <img src="images/DAW.png" alt="Music" />
+          </div>
+          <p class="hobby-tag">A Musician</p>
+          <p class="hobby-title">Yet to compose a song</p>
+        </div>
+        <div class="hobby-item">
+          <div class="hobby-img">
+            <img src="images/Hobby%202.jpg" alt="Running" />
+          </div>
+          <p class="hobby-tag">Pro at Functional Training</p>
+          <p class="hobby-title">Started an active lifestyle</p>
+        </div>
+        <div class="hobby-item">
+          <div class="hobby-img">
+            <img src="images/Sleep.png" alt="Sleep" />
+          </div>
+          <p class="hobby-tag">7+ Hour Sleep</p>
+          <p class="hobby-title">No. 1 driver of longevity</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONNECT -->
+    <div class="connect">
+      <h2>Let's Connect</h2>
+      <p class="connect-sub">Building scalable, data-heavy software experiences. Let's make something meaningful together.</p>
+      <div class="connect-links">
+        <a href="mailto:saideepdesign@gmail.com">saideepdesign@gmail.com</a>
+        <div class="connect-social">
+          <a href="https://www.linkedin.com/in/saideep-vangala/" target="_blank" rel="noopener">Linkedin</a>
+          <a href="https://medium.com/@saideepdesign" target="_blank" rel="noopener">Medium</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>2026@saideep - Designed and built with intent</footer>
+
+</body>
+</html>

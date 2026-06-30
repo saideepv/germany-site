@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Saideep × Norway</title>
-  <meta name="description" content="Saideep Vangala — Senior Product Designer actively relocating to Norway." />
+  <title>Saideep Ã— Norway</title>
+  <meta name="description" content="Saideep Vangala â€” Senior Product Designer actively relocating to Norway." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -30,7 +30,7 @@
 
     a { text-decoration: none; color: inherit; }
 
-    /* ── NAV ── */
+    /* â”€â”€ NAV â”€â”€ */
     nav {
       display: flex;
       align-items: center;
@@ -41,13 +41,22 @@
     }
 
     .nav-logo {
-      font-size: 14px;
+      font-size: 24px;
       font-weight: 700;
       color: var(--text-primary);
-      letter-spacing: -0.01em;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: baseline;
+      gap: 3px;
+      font-family: Georgia, serif;
     }
 
-    .nav-logo .logo-short { display: none; }
+    .nav-logo .logo-no {
+      font-size: 12px;
+      font-weight: 400;
+      opacity: 0.6;
+      letter-spacing: 0.03em;
+    }
 
     .nav-links {
       display: flex;
@@ -57,25 +66,43 @@
     }
 
     .nav-links a {
-      font-size: 14px;
+      font-size: 16px;
       font-weight: 400;
       color: var(--text-primary);
+      opacity: 0.55;
+      text-decoration: none;
+      transition: opacity 0.15s;
     }
 
     .nav-links a.active {
+      opacity: 1;
       text-decoration: underline;
-      text-underline-offset: 4px;
+      text-decoration-style: dotted;
+      text-underline-offset: 13px;
+      text-decoration-color: var(--text-primary);
     }
 
-    .nav-links a:hover {
-      border-bottom: 1px dotted rgba(10,10,20,0.55);
+    .nav-links a:hover:not(.active) {
+      opacity: 1;
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 13px;
+      text-decoration-color: var(--text-primary);
     }
 
-    .nav-links a.norway-link {
-      color: #EF2B2D;
+    .nav-links a.why-norway:hover {
+      background: linear-gradient(140deg, #E42F28 58%, rgba(255,255,255,0.7) 68%, #205FAF 78%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      opacity: 1;
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 13px;
+      text-decoration-color: var(--text-primary);
     }
 
-    /* ── HERO ── */
+    /* â”€â”€ HERO â”€â”€ */
     .hero {
       max-width: 1440px;
       margin: 0 auto;
@@ -109,7 +136,7 @@
       margin-top: 32px;
     }
 
-    .hero-prev strong {
+    .hero-prev-companies {
       color: var(--text-primary);
       font-weight: 600;
     }
@@ -132,7 +159,7 @@
       display: block;
     }
 
-    /* ── SECTIONS ── */
+    /* â”€â”€ SECTIONS â”€â”€ */
     .section {
       max-width: 1440px;
       margin: 0 auto;
@@ -146,7 +173,7 @@
       margin-bottom: 40px;
     }
 
-    /* ── WORK GRID ── */
+    /* â”€â”€ WORK GRID â”€â”€ */
     .work-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -237,7 +264,7 @@
       flex-shrink: 0;
     }
 
-    /* ── WHY NORWAY ── */
+    /* â”€â”€ WHY NORWAY â”€â”€ */
     .why-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -268,7 +295,7 @@
       line-height: 1.7;
     }
 
-    /* ── JOURNEY ── */
+    /* â”€â”€ JOURNEY â”€â”€ */
     .journey-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -339,7 +366,7 @@
       margin-top: 6px;
     }
 
-    /* ── CONNECT ── */
+    /* â”€â”€ CONNECT â”€â”€ */
     .connect {
       max-width: 1440px;
       margin: 0 auto;
@@ -390,7 +417,7 @@
       text-decoration: none;
     }
 
-    /* ── FOOTER ── */
+    /* â”€â”€ FOOTER â”€â”€ */
     footer {
       text-align: center;
       padding: 24px 120px;
@@ -398,7 +425,7 @@
       color: var(--text-tertiary);
     }
 
-    /* ── RESPONSIVE ── */
+    /* â”€â”€ RESPONSIVE â”€â”€ */
     @media (max-width: 960px) {
       nav { padding: 20px 40px; }
       .hero { padding: 80px 40px 60px; }
@@ -414,11 +441,42 @@
     }
 
     @media (max-width: 600px) {
-      nav { padding: 16px 24px; flex-wrap: wrap; gap: 12px; }
-      .nav-logo .logo-full { display: none; }
-      .nav-logo .logo-short { display: inline; }
-      .nav-links { gap: 16px; }
-      .hero { padding: 60px 24px 40px; flex-direction: column-reverse; }
+      /* top nav hidden on mobile */
+      nav { display: none; }
+
+      /* bottom fixed nav bar */
+      .mobile-nav {
+        display: flex;
+        position: fixed;
+        bottom: 0; left: 0; right: 0;
+        z-index: 100;
+        background: var(--bg-primary);
+        border-top: 1px solid var(--border, #E8E8E4);
+        padding: 12px 0 env(safe-area-inset-bottom, 12px);
+        justify-content: space-around;
+        align-items: center;
+      }
+
+      .mobile-nav a {
+        font-size: 12px;
+        font-weight: 400;
+        color: var(--text-primary);
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+      }
+
+      .mobile-nav a.active {
+        text-decoration: underline;
+        text-decoration-style: solid;
+        text-underline-offset: 3px;
+      }
+
+      body { padding-bottom: 72px; }
+
+      .hero { padding: 40px 24px 32px; flex-direction: column-reverse; }
       .hero-photo { width: 100%; aspect-ratio: 16/9; }
       .hero h1 { font-size: 30px; }
       .section { padding: 40px 24px; }
@@ -426,36 +484,44 @@
       .work-card-image { width: 100%; height: 180px; }
       .journey-grid { grid-template-columns: 1fr; }
       .connect { padding: 40px 24px; }
-      footer { padding: 24px; }
+      footer { padding: 16px 24px; }
+    }
+
+    @media (min-width: 601px) {
+      .mobile-nav { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
+  <!-- NAV (desktop) -->
   <nav>
-    <a class="nav-logo" href="https://saideep.design">
-      <span class="logo-full">Saideep</span>
-      <span class="logo-short">S</span>
-    </a>
+    <a class="nav-logo" href="./index.html">Saideep<span class="logo-no">NO</span></a>
     <ul class="nav-links">
-      <li><a href="https://saideep.design">Home</a></li>
-      <li><a href="https://saideep.design/about">About Me</a></li>
-      <li><a href="https://drive.google.com/file/d/1HiEhL3yhojKXlpeW-WOKGvESby1ViaPg/view" target="_blank" rel="noopener">Resume ↗</a></li>
-      <li><a href="#why-norway" class="norway-link active">Why Norway</a></li>
+      <li><a href="./index.html" class="active">Home</a></li>
+      <li><a href="./aboutme.html">About Me</a></li>
+      <li><a href="./whynorway.html" class="why-norway">Why Norway</a></li>
+      <li><a href="https://drive.google.com/file/d/1HiEhL3yhojKXlpeW-WOKGvESby1ViaPg/view" target="_blank" rel="noopener">Resume <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-left:2px;opacity:0.55"><path d="M19 19H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></a></li>
     </ul>
+  </nav>
+
+  <!-- NAV (mobile bottom bar) -->
+  <nav class="mobile-nav">
+    <a href="./index.html" class="active">Home</a>
+    <a href="./aboutme.html">About Me</a>
+    <a href="./whynorway.html" class="why-norway">Why Norway</a>
+    <a href="https://drive.google.com/file/d/1HiEhL3yhojKXlpeW-WOKGvESby1ViaPg/view" target="_blank" rel="noopener">Resume <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-left:2px;opacity:0.55"><path d="M19 19H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></a>
   </nav>
 
   <!-- HERO -->
   <div class="hero">
     <div class="hero-text">
-      <h1>Hello there.<br />I'm Saideep, a Product Designer<br />who wants to work in Norway.</h1>
-      <p class="hero-sub">Designing intuitive interfaces for complex workflows.</p>
-      <p class="hero-sub">Exploring AI-assisted design.</p>
-      <p class="hero-prev">Previously at&nbsp; <strong>Oracle, JP Morgan Chase, Teradata</strong></p>
+      <h1>Hello there,<br />I'm a Product Designer<br />building scalable,<br />data-heavy software.</h1>
+      <p class="hero-sub">Designing intuitive interfaces for complex workflows. Exploring AI-assisted design.<br />Actively looking out for roles in Norway.</p>
+      <p class="hero-prev">Previously: Oracle, JPMorgan Chase, Teradata</p>
     </div>
     <div class="hero-photo">
-      <img src="./DP.png" alt="Saideep Vangala" />
+      <img src="images/DP.png" alt="Saideep Vangala" />
     </div>
   </div>
 
@@ -466,7 +532,7 @@
 
       <a class="work-card" href="https://www.figma.com/proto/15N6r7ua9zx3kTx4AIGn7R/case-study---Active-Query-Monitoring---AQM?node-id=31-2897&scaling=scale-down-width&content-scaling=fixed&page-id=1%3A10&hide-ui=1" target="_blank" rel="noopener">
         <div class="work-card-image">
-          <img src="./Thumbnail%20-%20AQM.png" alt="Teradata Active Query Monitoring" />
+          <img src="images/Thumbnail%20-%20AQM.png" alt="Teradata Active Query Monitoring" />
         </div>
         <div class="work-card-content">
           <span class="work-tag">Teradata</span>
@@ -480,7 +546,7 @@
 
       <a class="work-card" href="https://www.figma.com/proto/bgmjLXt54IvHeegfUHhZ1A/Case-study---Pyro---Praja-RM-tool?node-id=28-75&scaling=scale-down-width&content-scaling=fixed&page-id=21%3A2" target="_blank" rel="noopener">
         <div class="work-card-image">
-          <img src="./Thumbnail%20-Pyro%20-%20RM.png" alt="Pyro AI" />
+          <img src="images/Thumbnail%20-Pyro%20-%20RM.png" alt="Pyro AI" />
         </div>
         <div class="work-card-content">
           <span class="work-tag">Pyro AI</span>
@@ -494,7 +560,7 @@
 
       <a class="work-card" href="https://www.figma.com/proto/kyYMKYUiEWqZeBJ1d8bh70/For-bahance?page-id=23%3A17189&node-id=149-2050&scaling=scale-down-width&content-scaling=fixed&hide-ui=1" target="_blank" rel="noopener">
         <div class="work-card-image">
-          <img src="./Thumbnail%20-%20Custom%20email%20domain.png" alt="InvoiceCloud" />
+          <img src="images/Thumbnail%20-%20Custom%20email%20domain.png" alt="InvoiceCloud" />
         </div>
         <div class="work-card-content">
           <span class="work-tag">InvoiceCloud</span>
@@ -508,7 +574,7 @@
 
       <a class="work-card" href="https://www.figma.com/proto/kyYMKYUiEWqZeBJ1d8bh70/Portfolio---behance?page-id=0%3A1&node-id=214-20147&scaling=scale-down-width&content-scaling=fixed&hide-ui=1" target="_blank" rel="noopener">
         <div class="work-card-image">
-          <img src="./Thumbnail%20-%20Cash%20Flow.png" alt="Oracle" />
+          <img src="images/Thumbnail%20-%20Cash%20Flow.png" alt="Oracle" />
         </div>
         <div class="work-card-content">
           <span class="work-tag">Oracle</span>
@@ -519,103 +585,6 @@
           <span class="work-btn">View Case Study <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></span>
         </div>
       </a>
-
-    </div>
-  </div>
-
-  <!-- WHY NORWAY -->
-  <div class="section" id="why-norway">
-    <h2 class="section-title">Why Norway 🇳🇴</h2>
-    <div class="why-grid">
-      <div class="why-card">
-        <div class="icon">🏛️</div>
-        <h3>Society that invests in its people</h3>
-        <p>I could earn high salaries in places like Dubai. But what draws me is a society that genuinely reinvests in its citizens — where high taxes translate into real, visible value: healthcare, education, and trust. That exchange matters to me deeply.</p>
-      </div>
-      <div class="why-card">
-        <div class="icon">📊</div>
-        <h3>Human Development Index</h3>
-        <p>Norway consistently ranks at the top of the HDI — not by accident, but by design. Strong social welfare, exceptional education, and workforce productivity that signals something most countries are still figuring out.</p>
-      </div>
-      <div class="why-card full">
-        <div class="icon">🛢️</div>
-        <h3>The Sovereign Wealth Fund — a masterclass in long-term thinking</h3>
-        <p>The way Norway manages its oil fund is something I genuinely admire. Rather than spending windfall wealth, Norway built one of the largest sovereign wealth funds in the world and invested it in the future. As a designer who thinks in systems and long-term outcomes, this kind of institutional foresight resonates with how I work.</p>
-      </div>
-      <div class="why-card">
-        <div class="icon">⚖️</div>
-        <h3>Work-life balance that's real</h3>
-        <p>Scandinavian work culture is built around trust, flat hierarchies, and depth over busyness. I'm looking for a culture where thoughtful work is valued — and Norway leads the world in exactly that.</p>
-      </div>
-      <div class="why-card">
-        <div class="icon">🤝</div>
-        <h3>Flat hierarchies, meaningful work</h3>
-        <p>Coming from years of enterprise design across JP Morgan Chase, Teradata, and Oracle — I've collaborated across teams and cultures. Norway's collaborative, low-ego work culture is the environment I want to grow in.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- NORWEGIAN JOURNEY -->
-  <div class="section">
-    <h2 class="section-title">My Norwegian Journey</h2>
-    <div class="journey-grid">
-
-      <div class="journey-card">
-        <div class="journey-card-body">
-          <p class="journey-tag">Language</p>
-          <h3>Learning Norsk</h3>
-          <p>Currently at A1 — actively building every day. Norwegian is becoming a regular part of my routine.</p>
-          <div class="language-bar-wrap">
-            <div class="language-bar"><div class="language-bar-fill"></div></div>
-            <p class="language-label">A1 — Beginner, actively progressing</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="journey-card">
-        <img class="journey-card-img" src="./fanto-pivi.jpg" alt="Fantorangen" />
-        <div class="journey-card-body">
-          <p class="journey-tag">NRK Super</p>
-          <h3>Fantorangen</h3>
-          <p>I watch Fantorangen regularly to pick up natural Norwegian pronunciation and cadence.</p>
-        </div>
-      </div>
-
-      <div class="journey-card">
-        <img class="journey-card-img" src="./currently%20watching.jpg" alt="Krokkaklubben" />
-        <div class="journey-card-body">
-          <p class="journey-tag">NRK Super</p>
-          <h3>Krokkaklubben</h3>
-          <p>Another NRK favourite — a window into what Norwegian culture feels like from the inside.</p>
-        </div>
-      </div>
-
-      <div class="journey-card">
-        <img class="journey-card-img" src="./ragnarok.jpg" alt="Ragnarok" />
-        <div class="journey-card-body">
-          <p class="journey-tag">Netflix</p>
-          <h3>Ragnarok</h3>
-          <p>My entry point — watched in Norwegian to understand the rhythm of the language and everyday life.</p>
-        </div>
-      </div>
-
-      <div class="journey-card">
-        <div class="journey-card-img" style="background:#2b2b2b; display:flex; align-items:center; justify-content:center; font-size:36px;">🔍</div>
-        <div class="journey-card-body">
-          <p class="journey-tag">Netflix</p>
-          <h3>Detektiv Ole</h3>
-          <p>Norwegian detective series — helped me understand language, humour, and social dynamics.</p>
-        </div>
-      </div>
-
-      <div class="journey-card">
-        <img class="journey-card-img" src="./yourway2norway.png" alt="Welcome to Norway" />
-        <div class="journey-card-body">
-          <p class="journey-tag">YouTube</p>
-          <h3>"Welcome to Norway"</h3>
-          <p>Practical, honest content about what actually living in Norway looks and feels like day-to-day.</p>
-        </div>
-      </div>
 
     </div>
   </div>
