@@ -593,8 +593,18 @@ html.cursor-visible .cursor-ring { opacity: 1; }
   margin: -16px 0 0 -16px;
   border-radius: var(--radius-full);
   border: 1px solid var(--color-text-primary);
-  transition: opacity var(--ease-standard), transform 0.05s linear;
+  transition: opacity var(--ease-standard), transform 0.05s linear,
+              width 0.18s ease, height 0.18s ease, margin 0.18s ease, background 0.18s ease;
 }
+
+html.cursor-hover-active .cursor-ring {
+  width: 48px;
+  height: 48px;
+  margin: -24px 0 0 -24px;
+  background: rgba(var(--color-ink-rgb), 0.07);
+}
+
+html.cursor-hover-active .cursor-dot { opacity: 0; }
 
 /* Why Norway hover — swap dot + ring for the flag */
 html.cursor-flag-active .cursor-dot,

@@ -75,4 +75,9 @@
       document.documentElement.classList.remove('cursor-flag-active');
     });
   });
+
+  document.addEventListener('mouseover', function (e) {
+    var over = !!e.target.closest('a, button, [role="button"], input[type="submit"]');
+    document.documentElement.classList.toggle('cursor-hover-active', over);
+  });
 })();
