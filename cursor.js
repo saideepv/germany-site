@@ -16,16 +16,13 @@
   var ring = document.createElement('div');
   ring.className = 'cursor-ring';
 
+  var FLAGS = {
+    norway: '<svg viewBox="0 0 220 160" width="32" height="23" aria-hidden="true"><rect width="220" height="160" fill="#E42F28"/><rect x="60" width="40" height="160" fill="#fff"/><rect y="60" width="220" height="40" fill="#fff"/><rect x="70" width="20" height="160" fill="#205FAF"/><rect y="70" width="220" height="20" fill="#205FAF"/></svg>',
+    germany: '<svg viewBox="0 0 5 3" width="32" height="19" aria-hidden="true"><rect width="5" height="1" fill="#1a1a1a"/><rect y="1" width="5" height="1" fill="#CC0000"/><rect y="2" width="5" height="1" fill="#FFCC00"/></svg>'
+  };
+
   var flag = document.createElement('div');
   flag.className = 'cursor-flag';
-  flag.innerHTML =
-    '<svg viewBox="0 0 220 160" width="32" height="23" aria-hidden="true">' +
-    '<rect width="220" height="160" fill="#E42F28"/>' +
-    '<rect x="60" width="40" height="160" fill="#fff"/>' +
-    '<rect y="60" width="220" height="40" fill="#fff"/>' +
-    '<rect x="70" width="20" height="160" fill="#205FAF"/>' +
-    '<rect y="70" width="220" height="20" fill="#205FAF"/>' +
-    '</svg>';
 
   document.body.appendChild(dot);
   document.body.appendChild(ring);
@@ -66,7 +63,10 @@
   }
   requestAnimationFrame(animateRing);
 
-  var flagTriggers = document.querySelectorAll('.why-norway');
+  var flagTriggers = document.querySelectorAll('.why-norway, .why-Germany');
+  var flagKey = document.querySelector('.why-norway') ? 'norway' : 'germany';
+  flag.innerHTML = FLAGS[flagKey];
+
   flagTriggers.forEach(function (el) {
     el.addEventListener('mouseenter', function () {
       document.documentElement.classList.add('cursor-flag-active');

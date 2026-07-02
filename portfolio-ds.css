@@ -132,7 +132,7 @@ a { text-decoration: none; color: inherit; }
   font-family: var(--font-serif);
 }
 
-.nav-logo .logo-no {
+.nav-logo .logo-suffix {
   font-size: var(--font-size-12);
   font-weight: var(--font-weight-regular);
   opacity: 0.6;
@@ -181,11 +181,23 @@ nav {
   text-decoration-color: var(--color-text-primary);
 }
 
-/* Decorative hover-only flourish — Norway flag gradient text-fill.
+/* Decorative hover-only flourish — country flag gradient text-fill.
    Acceptable only as a transient hover state on a single nav word; never
    use this as a resting/readable text color (contrast ~4.4:1, under AA). */
 .nav-links a.why-norway:hover {
   background: linear-gradient(140deg, var(--color-brand-red) 58%, rgba(255,255,255,0.7) 68%, var(--color-brand-blue) 78%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  opacity: 1;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 13px;
+  text-decoration-color: var(--color-text-primary);
+}
+
+.nav-links a.why-Germany:hover {
+  background: linear-gradient(140deg, #1a1a1a 30%, #CC0000 58%, #FFCC00 82%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
