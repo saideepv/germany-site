@@ -260,7 +260,7 @@ nav {
   border-radius: var(--radius-pill);
 }
 
-.lang-label { font-size: var(--font-size-11); color: var(--color-text-tertiary); margin-top: 6px; }
+.lang-label { font-size: var(--font-size-13); color: var(--color-text-tertiary); margin-top: 6px; }
 
 /* Mobile bottom nav bar (identical on every page once standardized —
    index.html previously had a stray flex-column rule here with no icons
@@ -397,7 +397,7 @@ footer {
 
 .work-card-body { display: flex; flex-direction: column; gap: var(--space-1); }
 .work-card-body h3 { font-size: var(--font-size-16); font-weight: var(--font-weight-bold); line-height: var(--line-height-snug); letter-spacing: var(--tracking-snug); color: var(--color-text-primary); }
-.work-card-body p { font-size: var(--font-size-13); color: var(--color-text-secondary); line-height: var(--line-height-relaxed); }
+.work-card-body p { font-size: var(--font-size-14); color: var(--color-text-secondary); line-height: var(--line-height-relaxed); }
 
 /* — Home: "why norway" preview cards — */
 .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-card-gap-tight); }
@@ -412,9 +412,9 @@ footer {
 .journey-card { background: var(--color-bg-card); border-radius: var(--radius-card); overflow: hidden; }
 .journey-card-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; background: var(--color-bg-image-placeholder-2); }
 .journey-card-body { padding: var(--space-2); display: flex; flex-direction: column; gap: 6px; }
-.journey-tag { font-size: var(--font-size-11); font-weight: var(--font-weight-semibold); color: var(--color-text-tertiary); text-transform: uppercase; letter-spacing: var(--tracking-wider); }
+.journey-tag { font-size: var(--font-size-12); font-weight: var(--font-weight-semibold); color: var(--color-text-tertiary); text-transform: uppercase; letter-spacing: var(--tracking-wider); }
 .journey-card-body h3 { font-size: var(--font-size-15); font-weight: var(--font-weight-bold); line-height: var(--line-height-snug); color: var(--color-text-primary); }
-.journey-card-body p { font-size: var(--font-size-13); color: var(--color-text-secondary); line-height: var(--line-height-relaxed); }
+.journey-card-body p { font-size: var(--font-size-14); color: var(--color-text-secondary); line-height: var(--line-height-relaxed); }
 
 /* — About: teaching — */
 .teaching-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-card-gap-cozy); }
@@ -436,7 +436,7 @@ footer {
 }
 .designerrs-wrap img { max-width: 70%; max-height: 70%; object-fit: contain; }
 
-.item-label { font-size: var(--font-size-12); color: var(--color-text-tertiary); line-height: var(--line-height-normal); }
+.item-label { font-size: var(--font-size-14); color: var(--color-text-secondary); line-height: var(--line-height-normal); }
 
 /* — About: reading — */
 .reading-section { background: var(--color-bg-canvas); padding: var(--space-4) 0; }
@@ -444,7 +444,7 @@ footer {
 .book-item { display: flex; flex-direction: column; gap: var(--space-1); }
 .book-cover { border-radius: var(--radius-card); overflow: hidden; background: var(--color-bg-card); aspect-ratio: 3/4; max-height: 280px; }
 .book-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.book-tag { font-size: var(--font-size-12); color: var(--color-text-tertiary); }
+.book-tag { font-size: var(--font-size-13); color: var(--color-text-tertiary); }
 .book-title { font-size: var(--font-size-14); font-weight: var(--font-weight-medium); color: var(--color-text-primary); }
 
 /* — About: hobbies — */
@@ -452,7 +452,7 @@ footer {
 .hobby-item { display: flex; flex-direction: column; gap: var(--space-1); }
 .hobby-img { border-radius: var(--radius-card); overflow: hidden; background: var(--color-bg-card); aspect-ratio: 4/3; max-height: 220px; padding: var(--space-2); }
 .hobby-img img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: var(--radius-sm); }
-.hobby-tag { font-size: var(--font-size-12); color: var(--color-text-tertiary); }
+.hobby-tag { font-size: var(--font-size-13); color: var(--color-text-tertiary); }
 .hobby-title { font-size: var(--font-size-14); font-weight: var(--font-weight-medium); color: var(--color-text-primary); }
 
 /* — Why Norway: hero — */
@@ -479,9 +479,9 @@ footer {
 .culture-card { background: var(--color-bg-card); border-radius: var(--radius-card); overflow: hidden; }
 .culture-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; background: var(--color-bg-image-placeholder-2); }
 .culture-body { padding: var(--space-2); display: flex; flex-direction: column; gap: 6px; }
-.culture-tag { font-size: var(--font-size-11); font-weight: var(--font-weight-semibold); color: var(--color-text-tertiary); text-transform: uppercase; letter-spacing: var(--tracking-wider); }
+.culture-tag { font-size: var(--font-size-12); font-weight: var(--font-weight-semibold); color: var(--color-text-tertiary); text-transform: uppercase; letter-spacing: var(--tracking-wider); }
 .culture-body h3 { font-size: var(--font-size-15); font-weight: var(--font-weight-bold); line-height: var(--line-height-snug); }
-.culture-body p { font-size: var(--font-size-13); color: var(--color-text-secondary); line-height: var(--line-height-relaxed); }
+.culture-body p { font-size: var(--font-size-14); color: var(--color-text-secondary); line-height: var(--line-height-relaxed); }
 
 
 /* ── 5. TEMPLATES ──────────────────────────────────────────────────────── */
