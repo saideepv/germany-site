@@ -196,17 +196,6 @@ nav {
   text-decoration-color: var(--color-text-primary);
 }
 
-.nav-links a.why-Germany:hover {
-  background: linear-gradient(140deg, #1a1a1a 30%, #CC0000 58%, #FFCC00 82%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  opacity: 1;
-  text-decoration: underline;
-  text-decoration-style: dotted;
-  text-underline-offset: 13px;
-  text-decoration-color: var(--color-text-primary);
-}
 
 /* External-link icon (used inline next to "Resume" in both nav variants) */
 .icon-external-link { opacity: 0.55; vertical-align: middle; margin-left: 2px; }
@@ -574,58 +563,16 @@ body.page-why .connect { text-align: center; display: flex; flex-direction: colu
 
 
 /* ── 7. CUSTOM CURSOR ──────────────────────────────────────────────────── */
-/* Activated by cursor.js only on desktop / fine-pointer / motion-safe
-   contexts. Without JS, or on touch/mobile/reduced-motion, none of this
-   applies and the native cursor is left untouched. */
+/* Only the country flag on .why-norway hover. Native cursor everywhere else. */
 
-.custom-cursor-active,
-.custom-cursor-active * { cursor: none; }
-
-.cursor-dot, .cursor-ring, .cursor-flag {
+.cursor-flag {
   position: fixed;
   top: 0; left: 0;
   pointer-events: none;
   z-index: 9999;
   opacity: 0;
   transition: opacity var(--ease-standard);
-}
-
-html.cursor-visible .cursor-dot,
-html.cursor-visible .cursor-ring { opacity: 1; }
-
-.cursor-dot {
-  width: 8px; height: 8px;
-  margin: -4px 0 0 -4px;
-  border-radius: var(--radius-full);
-  background: var(--color-text-primary);
-}
-
-.cursor-ring {
-  width: 32px; height: 32px;
-  margin: -16px 0 0 -16px;
-  border-radius: var(--radius-full);
-  border: 1px solid var(--color-text-primary);
-  transition: opacity var(--ease-standard), transform 0.05s linear,
-              width 0.18s ease, height 0.18s ease, margin 0.18s ease, background 0.18s ease;
-}
-
-html.cursor-hover-active .cursor-ring {
-  width: 48px;
-  height: 48px;
-  margin: -24px 0 0 -24px;
-  background: rgba(var(--color-ink-rgb), 0.07);
-}
-
-html.cursor-hover-active .cursor-dot { opacity: 0; }
-
-/* Why Norway hover — swap dot + ring for the flag */
-html.cursor-flag-active .cursor-dot,
-html.cursor-flag-active .cursor-ring { opacity: 0; }
-
-.cursor-flag {
-  width: 32px; height: 23px;
-  margin: -11px 0 0 -16px;
-  filter: drop-shadow(0 2px 6px rgba(var(--color-ink-rgb), 0.35));
+  filter: drop-shadow(0 1px 3px rgba(var(--color-ink-rgb), 0.3));
 }
 
 html.cursor-flag-active .cursor-flag { opacity: 1; }
