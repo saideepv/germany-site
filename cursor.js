@@ -38,7 +38,7 @@
     if (!triggers.length) return;
     flag.innerHTML = FLAGS[selector];
     triggers.forEach(function (el) {
-      el.style.cursor = 'none';
+      if (selector === '.why-norway') el.style.cursor = 'none';
       el.addEventListener('mouseenter', function () {
         document.documentElement.classList.add('cursor-flag-active');
       });
