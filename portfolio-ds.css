@@ -41,13 +41,13 @@
   --font-size-11: 11px; --font-size-12: 12px; --font-size-13: 13px; --font-size-14: 14px;
   --font-size-15: 15px; --font-size-16: 16px; --font-size-24: 24px; --font-size-28: 28px;
   --font-size-30: 30px; --font-size-32: 32px; --font-size-36: 36px; --font-size-40: 40px;
-  --font-size-48: 48px; --font-size-56: 56px;
+  --font-size-48: 48px; --font-size-56: 56px; --font-size-72: 72px; --font-size-76: 76px;
 
   --font-weight-regular: 400; --font-weight-medium: 500;
   --font-weight-semibold: 600; --font-weight-bold: 700;
 
-  --line-height-tight: 1.05; --line-height-snug: 1.3; --line-height-normal: 1.5;
-  --line-height-relaxed: 1.6; --line-height-loose: 1.7;
+  --line-height-tight: 1.05; --line-height-display: 1.15; --line-height-snug: 1.3;
+  --line-height-normal: 1.5; --line-height-relaxed: 1.6; --line-height-loose: 1.7;
 
   --tracking-tight: -0.02em; --tracking-snug: -0.01em;
   --tracking-wide: 0.03em; --tracking-wider: 0.08em;
@@ -137,6 +137,16 @@ a { text-decoration: none; color: inherit; }
   font-weight: var(--font-weight-regular);
   opacity: 0.6;
   letter-spacing: var(--tracking-wide);
+}
+
+/* Display heading — large hero-style headline, reusable across pages.
+   Responsive sizing (72px tablet / 56px mobile) lives with this class
+   in §6 RESPONSIVE, not on the page-specific container. */
+.display-heading {
+  font-size: var(--font-size-76);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-display);
+  letter-spacing: var(--tracking-tight);
 }
 
 /* Desktop nav bar + nav links (identical on every page) */
@@ -487,14 +497,13 @@ footer {
 
 /* — Why Norway: hero — */
 .hero-block { display: flex; flex-direction: row; align-items: flex-start; justify-content: space-between; gap: var(--space-6); }
-.hero-block h1 { font-size: calc(var(--font-size-48) * 2 - 20px); font-weight: var(--font-weight-bold); line-height: calc(var(--line-height-tight) + 0.1); letter-spacing: var(--tracking-tight); max-width: 680px; flex-shrink: 0; }
+.hero-block h1 { max-width: 680px; flex-shrink: 0; }
 .hero-block-copy { display: flex; flex-direction: column; gap: var(--space-4); padding-top: var(--space-1); }
 .hero-block p { font-size: var(--font-size-16); color: var(--color-text-secondary); line-height: var(--line-height-loose); max-width: 420px; }
 
 /* — Why Norway: reason cards — */
-.reason-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-card-gap-tight); }
+.reason-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--space-card-gap-tight); }
 .reason-card { background: var(--color-bg-card); border-radius: var(--radius-card); padding: var(--space-card-padding-lg); display: flex; flex-direction: column; gap: 12px; }
-.reason-card.full { grid-column: 1 / -1; }
 .reason-card .icon { font-size: var(--font-size-24); }
 .reason-card h3 { font-size: var(--font-size-16); font-weight: var(--font-weight-bold); line-height: var(--line-height-snug); letter-spacing: var(--tracking-snug); }
 .reason-card p { font-size: var(--font-size-14); color: var(--color-text-secondary); line-height: var(--line-height-loose); }
@@ -558,9 +567,8 @@ body.page-why .connect { text-align: center; display: flex; flex-direction: colu
   .hero-block { flex-direction: column; gap: var(--space-3); }
   .hero-block h1 { max-width: none; }
   .hero-block-copy { padding-top: 0; }
-  body.page-why .hero-block h1 { font-size: calc(var(--font-size-36) * 2); max-width: none; }
-  body.page-why .reason-grid { grid-template-columns: 1fr; }
-  body.page-why .reason-card.full { grid-column: 1; }
+  .display-heading { font-size: var(--font-size-72); }
+  body.page-why .reason-grid { grid-template-columns: 1fr 1fr; }
   body.page-why .stat-row { grid-template-columns: 1fr 1fr; }
   body.page-why .culture-grid { grid-template-columns: 1fr 1fr; }
 }
@@ -585,7 +593,8 @@ body.page-why .connect { text-align: center; display: flex; flex-direction: colu
   body.page-about .reading-grid { grid-template-columns: 1fr; }
   body.page-about .hobbies-grid { grid-template-columns: 1fr; }
 
-  body.page-why .hero-block h1 { font-size: calc(var(--font-size-28) * 2); }
+  .display-heading { font-size: var(--font-size-56); }
+  body.page-why .reason-grid { grid-template-columns: 1fr; }
   body.page-why .stat-row { grid-template-columns: 1fr; }
   body.page-why .culture-grid { grid-template-columns: 1fr; }
 }
