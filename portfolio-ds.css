@@ -85,7 +85,6 @@
 
   --color-border: var(--color-gray-150);
   --shadow-mobile-nav: 0 -2px 8px rgba(0, 0, 0, 0.06);
-  --shadow-flag: 0 2px 10px rgba(0, 0, 0, 0.18);
 
   --space-page-margin:        var(--space-12);
   --space-page-margin-tablet: var(--space-5);
@@ -486,34 +485,25 @@ footer {
 .hero-block-copy { display: flex; flex-direction: column; gap: var(--space-4); padding-top: var(--space-1); }
 .hero-block p { font-size: var(--font-size-16); color: var(--color-text-secondary); line-height: var(--line-height-loose); max-width: 420px; }
 
-/* Hero flag intro — fades in, holds, then fades out; the headline slides up
-   and fades in shortly after, so the flag recedes as the text settles in. */
-@keyframes hero-flag-fade {
-  0%   { opacity: 0; transform: translateY(-6px) scale(0.92); }
-  25%  { opacity: 1; transform: translateY(0) scale(1); }
-  75%  { opacity: 1; transform: translateY(0) scale(1); }
-  100% { opacity: 0; transform: translateY(-4px) scale(0.96); }
+/* Mobile-only flag splash — collapses to nothing on desktop/tablet
+   (.hero-intro-wrap becomes a no-op, .flag-splash stays hidden). Full
+   behavior is defined in §6 RESPONSIVE, ≤600px only. */
+.hero-intro-wrap { display: contents; }
+.flag-splash { display: none; }
+
+@keyframes flag-shine {
+  from { background-position: -120% -120%; }
+  to   { background-position: 120% 120%; }
 }
 
-@keyframes hero-heading-up {
-  from { opacity: 0; transform: translateY(18px); }
-  to   { opacity: 1; transform: translateY(0); }
+@keyframes hero-rise {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
 }
-
-.hero-flag-intro {
-  display: block;
-  width: 64px;
-  height: auto;
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-flag);
-  animation: hero-flag-fade 1.4s ease forwards;
-}
-
-.hero-heading-wrap h1 { animation: hero-heading-up 0.6s ease 0.25s both; }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-flag-intro { display: none; }
-  .hero-heading-wrap h1 { animation: none; }
+  .flag-splash { display: none !important; }
+  body.page-why .hero-block { animation: none !important; transform: none !important; }
 }
 
 /* — Why Germany: reason cards — */
@@ -612,6 +602,50 @@ body.page-why .connect { text-align: center; display: flex; flex-direction: colu
   body.page-why .reason-grid { grid-template-columns: 1fr; }
   body.page-why .stat-row { grid-template-columns: 1fr; }
   body.page-why .culture-grid { grid-template-columns: 1fr; }
+
+  /* Flag splash intro (mobile only) — full-bleed sky gradient + flag with a
+     1s diagonal shine sweep, holds for 0.5s, then the hero content rises up
+     from below and covers it. See §7 for keyframes. */
+  .hero-intro-wrap { display: block; position: relative; overflow: hidden; }
+
+  .flag-splash {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    inset: 0;
+    left: 50%;
+    width: 100vw;
+    transform: translateX(-50%);
+    overflow: hidden;
+    z-index: 1;
+    background: linear-gradient(180deg, #6EC1F2 0%, #BFE3F7 55%, #EFF9FD 100%);
+  }
+
+  .flag-splash::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.6) 50%, transparent 65%);
+    background-size: 300% 300%;
+    background-position: -120% -120%;
+    animation: flag-shine 1s ease-out forwards;
+  }
+
+  .flag-splash-img {
+    display: block;
+    width: 60%;
+    max-width: 240px;
+    height: auto;
+    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.25));
+  }
+
+  body.page-why .hero-block {
+    position: relative;
+    z-index: 2;
+    background: var(--color-bg-canvas);
+    animation: hero-rise 0.7s ease 1.5s both;
+  }
 }
 
 @media (min-width: 601px) {
@@ -633,21 +667,3 @@ body.page-why .connect { text-align: center; display: flex; flex-direction: colu
 }
 
 html.cursor-flag-active .cursor-flag { opacity: 1; }
-
-/* Mobile tap-flash — touch equivalent of the desktop hover flag (see cursor.js).
-   Fades in, holds, then fades out over ~1.5s before navigating to Why Germany. */
-.tap-flag-flash {
-  position: fixed;
-  top: 50%; left: 50%;
-  width: 96px;
-  height: auto;
-  z-index: 9999;
-  pointer-events: none;
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-flag);
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(0.9);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.tap-flag-flash.is-visible { opacity: 1; transform: translate(-50%, -50%) scale(1); }
