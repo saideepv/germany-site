@@ -609,9 +609,6 @@ body.page-why .connect { text-align: center; display: flex; flex-direction: colu
   .hero-intro-wrap { display: block; position: relative; overflow: hidden; }
 
   .flag-splash {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     position: absolute;
     inset: 0;
     left: 50%;
@@ -622,22 +619,36 @@ body.page-why .connect { text-align: center; display: flex; flex-direction: colu
     background: linear-gradient(180deg, #6EC1F2 0%, #BFE3F7 55%, #EFF9FD 100%);
   }
 
+  .flag-splash-img {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+  }
+
+  /* Bottom-edge shadow — separates the banner from the content below */
+  .flag-splash::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(to bottom, transparent 65%, rgba(0, 0, 0, 0.4) 100%);
+    pointer-events: none;
+  }
+
   .flag-splash::after {
     content: '';
     position: absolute;
     inset: 0;
+    z-index: 2;
     background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.6) 50%, transparent 65%);
     background-size: 300% 300%;
     background-position: -120% -120%;
     animation: flag-shine 1s ease-out forwards;
-  }
-
-  .flag-splash-img {
-    display: block;
-    width: 60%;
-    max-width: 240px;
-    height: auto;
-    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.25));
+    pointer-events: none;
   }
 
   body.page-why .hero-block {
