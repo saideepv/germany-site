@@ -1,10 +1,39 @@
 (function () {
   'use strict';
 
+  var isMobile = window.matchMedia('(max-width: 600px)').matches;
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Mobile has no hover, so the "Why Germany" flag becomes a tap flash instead:
+  // fades in, holds, fades out over ~1.5s, then navigates.
+  if (isMobile && !reducedMotion) {
+    var mobileLink = document.querySelector('.mobile-nav a[href="./whygermany.html"]');
+    if (mobileLink && !mobileLink.classList.contains('active')) {
+      mobileLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        var dest = mobileLink.href;
+        var flash = document.createElement('img');
+        flash.src = 'images/german%20flag.png';
+        flash.alt = '';
+        flash.className = 'tap-flag-flash';
+        document.body.appendChild(flash);
+        requestAnimationFrame(function () {
+          flash.classList.add('is-visible');
+        });
+        setTimeout(function () {
+          flash.classList.remove('is-visible');
+        }, 1200);
+        setTimeout(function () {
+          window.location.href = dest;
+        }, 1500);
+      });
+    }
+  }
+
   var skip =
-    window.matchMedia('(max-width: 600px)').matches ||
+    isMobile ||
     !window.matchMedia('(pointer: fine)').matches ||
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    reducedMotion;
 
   if (skip) return;
 

@@ -1,6 +1,6 @@
 /* ==========================================================================
-   PORTFOLIO-DS — Saideep × Norway design system
-   One shared stylesheet for index.html, aboutme.html, whynorway.html.
+   PORTFOLIO-DS — Saideep × Germany design system
+   One shared stylesheet for index.html, aboutme.html, whygermany.html.
 
    Structure:
    1. TOKENS     — primitives, then semantic tokens built on top of them
@@ -32,8 +32,6 @@
   --color-ink:      #0A0A14;
   --color-ink-rgb:  10, 10, 20;
   --color-black:    #000000;
-  --color-red-500:  #E42F28; /* Norway flag red — decorative accent only */
-  --color-blue-600: #205FAF; /* Norway flag blue — decorative accent only */
 
   --font-sans:  'IBM Plex Sans', sans-serif;
   --font-serif: Georgia, serif;
@@ -86,8 +84,8 @@
      it the next time those specific rules get touched. */
 
   --color-border: var(--color-gray-150);
-  --color-brand-red:  var(--color-red-500);
-  --color-brand-blue: var(--color-blue-600);
+  --shadow-mobile-nav: 0 -2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-flag: 0 2px 10px rgba(0, 0, 0, 0.18);
 
   --space-page-margin:        var(--space-12);
   --space-page-margin-tablet: var(--space-5);
@@ -191,22 +189,6 @@ nav {
   text-decoration-color: var(--color-text-primary);
 }
 
-/* Decorative hover-only flourish — country flag gradient text-fill.
-   Acceptable only as a transient hover state on a single nav word; never
-   use this as a resting/readable text color (contrast ~4.4:1, under AA). */
-.nav-links a.why-norway:hover {
-  background: linear-gradient(140deg, var(--color-brand-red) 58%, rgba(255,255,255,0.7) 68%, var(--color-brand-blue) 78%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  opacity: 1;
-  text-decoration: underline;
-  text-decoration-style: dotted;
-  text-underline-offset: 13px;
-  text-decoration-color: var(--color-text-primary);
-}
-
-
 /* External-link icon (used inline next to "Resume" in nav, and social links in Connect) */
 .icon-external-link { opacity: 0.55; vertical-align: middle; margin-left: 2px; transition: opacity var(--ease-standard); }
 a:hover .icon-external-link { opacity: 1; }
@@ -281,7 +263,7 @@ a:hover .icon-external-link { opacity: 1; }
   bottom: 0; left: 0; right: 0;
   z-index: 100;
   background: var(--color-bg-canvas);
-  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.06);
+  box-shadow: var(--shadow-mobile-nav);
   padding: 0 0 env(safe-area-inset-bottom, 0px) 0;
   align-items: stretch;
 }
@@ -498,26 +480,56 @@ footer {
 .hobby-tag { font-size: var(--font-size-15); color: var(--color-text-tertiary); }
 .hobby-title { font-size: var(--font-size-16); font-weight: var(--font-weight-medium); color: var(--color-text-primary); }
 
-/* — Why Norway: hero — */
+/* — Why Germany: hero — */
 .hero-block { display: flex; flex-direction: row; align-items: flex-start; justify-content: space-between; gap: var(--space-6); }
-.hero-block h1 { max-width: 680px; flex-shrink: 0; }
+.hero-heading-wrap { display: flex; flex-direction: column; gap: var(--space-2); max-width: 680px; flex-shrink: 0; }
 .hero-block-copy { display: flex; flex-direction: column; gap: var(--space-4); padding-top: var(--space-1); }
 .hero-block p { font-size: var(--font-size-16); color: var(--color-text-secondary); line-height: var(--line-height-loose); max-width: 420px; }
 
-/* — Why Norway: reason cards — */
+/* Hero flag intro — fades in, holds, then fades out; the headline slides up
+   and fades in shortly after, so the flag recedes as the text settles in. */
+@keyframes hero-flag-fade {
+  0%   { opacity: 0; transform: translateY(-6px) scale(0.92); }
+  25%  { opacity: 1; transform: translateY(0) scale(1); }
+  75%  { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(-4px) scale(0.96); }
+}
+
+@keyframes hero-heading-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-flag-intro {
+  display: block;
+  width: 64px;
+  height: auto;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-flag);
+  animation: hero-flag-fade 1.4s ease forwards;
+}
+
+.hero-heading-wrap h1 { animation: hero-heading-up 0.6s ease 0.25s both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-flag-intro { display: none; }
+  .hero-heading-wrap h1 { animation: none; }
+}
+
+/* — Why Germany: reason cards — */
 .reason-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--space-card-gap-tight); }
 .reason-card { background: var(--color-bg-card); border-radius: var(--radius-card); padding: var(--space-card-padding-lg); display: flex; flex-direction: column; gap: 12px; }
 .reason-card .icon { font-size: var(--font-size-24); }
 .reason-card h3 { font-size: var(--font-size-16); font-weight: var(--font-weight-bold); line-height: var(--line-height-snug); letter-spacing: var(--tracking-snug); }
 .reason-card p { font-size: var(--font-size-14); color: var(--color-text-secondary); line-height: var(--line-height-loose); }
 
-/* — Why Norway: stat row — */
+/* — Why Germany: stat row — */
 .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-card-gap-tight); }
 .stat-card { background: var(--color-bg-card); border-radius: var(--radius-card); padding: var(--space-card-padding-lg); display: flex; flex-direction: column; gap: var(--space-1); }
 .stat-number { font-size: var(--font-size-36); font-weight: var(--font-weight-bold); letter-spacing: -0.03em; }
 .stat-label { font-size: var(--font-size-14); color: var(--color-text-secondary); line-height: var(--line-height-normal); }
 
-/* — Why Norway: culture grid — */
+/* — Why Germany: culture grid — */
 .culture-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-card-gap-tight); }
 .culture-card { background: var(--color-bg-card); border-radius: var(--radius-card); overflow: hidden; }
 .culture-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; background: var(--color-bg-image-placeholder-2); }
@@ -539,7 +551,7 @@ body.page-about .page { max-width: 1440px; margin: 0 auto; padding: var(--space-
 body.page-about .section-title { font-size: var(--font-size-24); font-weight: var(--font-weight-bold); letter-spacing: var(--tracking-snug); margin-bottom: var(--space-3); }
 body.page-about .connect { text-align: center; display: flex; flex-direction: column; align-items: center; gap: var(--space-4); padding-bottom: 0; margin-top: var(--space-3); }
 
-/* Why Norway: same .page pattern as About, but roomier vertical rhythm and a larger section title */
+/* Why Germany: same .page pattern as About, but roomier vertical rhythm and a larger section title */
 body.page-why .page { max-width: 1440px; margin: 0 auto; padding: var(--space-10) var(--space-page-margin); display: flex; flex-direction: column; gap: var(--space-13); }
 body.page-why .section-title { font-size: var(--font-size-28); font-weight: var(--font-weight-bold); letter-spacing: var(--tracking-snug); margin-bottom: var(--space-3); }
 body.page-why .connect { text-align: center; display: flex; flex-direction: column; align-items: center; gap: var(--space-4); padding-bottom: 0; margin-top: var(--space-3); }
@@ -568,7 +580,7 @@ body.page-why .connect { text-align: center; display: flex; flex-direction: colu
   body.page-about .hobbies-grid { grid-template-columns: 1fr 1fr; }
 
   .hero-block { flex-direction: column; gap: var(--space-3); }
-  .hero-block h1 { max-width: none; }
+  .hero-heading-wrap { max-width: none; }
   .hero-block-copy { padding-top: 0; }
   .display-heading { font-size: var(--font-size-72); }
   body.page-why .reason-grid { grid-template-columns: 1fr 1fr; }
@@ -608,7 +620,7 @@ body.page-why .connect { text-align: center; display: flex; flex-direction: colu
 
 
 /* ── 7. CUSTOM CURSOR ──────────────────────────────────────────────────── */
-/* Only the country flag on .why-norway hover. Native cursor everywhere else. */
+/* Only the country flag on .why-Germany hover (driven by cursor.js). Native cursor everywhere else. */
 
 .cursor-flag {
   position: fixed;
@@ -621,3 +633,21 @@ body.page-why .connect { text-align: center; display: flex; flex-direction: colu
 }
 
 html.cursor-flag-active .cursor-flag { opacity: 1; }
+
+/* Mobile tap-flash — touch equivalent of the desktop hover flag (see cursor.js).
+   Fades in, holds, then fades out over ~1.5s before navigating to Why Germany. */
+.tap-flag-flash {
+  position: fixed;
+  top: 50%; left: 50%;
+  width: 96px;
+  height: auto;
+  z-index: 9999;
+  pointer-events: none;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-flag);
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.9);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.tap-flag-flash.is-visible { opacity: 1; transform: translate(-50%, -50%) scale(1); }
