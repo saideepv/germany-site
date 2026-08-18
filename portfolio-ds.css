@@ -492,8 +492,8 @@ footer {
 .flag-splash { display: none; }
 
 @keyframes flag-shine {
-  from { background-position: -120% -120%; }
-  to   { background-position: 120% 120%; }
+  from { transform: translate(-120%, -120%); }
+  to   { transform: translate(120%, 120%); }
 }
 
 @keyframes hero-rise {
@@ -632,18 +632,22 @@ body.page-why .connect { text-align: center; display: flex; flex-direction: colu
     position: absolute;
     inset: 0;
     z-index: 1;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.55) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.75) 100%);
     pointer-events: none;
   }
 
+  /* transform-only sweep (not background-position) — background-position
+     animations force a repaint every frame, which is what was causing this
+     to restart/replay multiple times on some mobile browsers. transform is
+     GPU-composited and doesn't have that problem (same as hero-rise below,
+     which was already reliable). */
   .flag-splash::after {
     content: '';
     position: absolute;
     inset: 0;
     z-index: 2;
     background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.5) 50%, transparent 65%);
-    background-size: 300% 300%;
-    background-position: -120% -120%;
+    transform: translate(-120%, -120%);
     animation: flag-shine 1s ease-out forwards;
     pointer-events: none;
   }
