@@ -606,6 +606,7 @@ body.page-why .connect { text-align: center; display: flex; flex-direction: colu
     height: 42vh;
     transform: translateX(-50%);
     overflow: hidden;
+    background: #1a1a1a;
   }
 
   .flag-splash-img {
