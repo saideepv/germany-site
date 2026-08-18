@@ -34,21 +34,23 @@
 
   <div class="page">
 
-    <!-- FLAG BANNER (mobile only): permanent full-bleed flag photo with a dark
-         overlay present from the start; only the diagonal shine sweep animates.
-         No-op on tablet/desktop (see portfolio-ds.css). -->
-    <div class="flag-splash" aria-hidden="true">
-      <img src="images/german-flag-wide.png" alt="" class="flag-splash-img" />
-    </div>
-
     <!-- HERO -->
-    <div class="hero-block">
-      <div class="hero-heading-wrap">
-        <h1 class="display-heading">Why Deutschland is My Deliberate Choice</h1>
+    <!-- Mobile only: flag-splash (full-bleed dark-overlaid flag, 1s shine sweep,
+         plays once) sits beneath hero-block, which starts hidden below the
+         viewport and rises to cover it right as the shine finishes. Flag is
+         never seen again until reload. No-op on tablet/desktop (see portfolio-ds.css). -->
+    <div class="hero-intro-wrap">
+      <div class="flag-splash" aria-hidden="true">
+        <img src="images/german-flag-wide.png" alt="" class="flag-splash-img" />
       </div>
-      <div class="hero-block-copy">
-        <p>Germany is one of the friendliest countries for immigrants to build a life in, with a clear, welcoming path to PR and citizenship. I genuinely love the culture, and I'm already learning the language.</p>
-        <p>It's also a huge, diverse market (B2B, B2B2C, B2C) with incredible design and engineering talent. My passion sits squarely in B2B: interaction-heavy, engineering-heavy products. I've spent my career designing for complex enterprise workflows, and that's exactly where I want to keep building.</p>
+      <div class="hero-block">
+        <div class="hero-heading-wrap">
+          <h1 class="display-heading">Why Deutschland is My Deliberate Choice</h1>
+        </div>
+        <div class="hero-block-copy">
+          <p>Germany is one of the friendliest countries for immigrants to build a life in, with a clear, welcoming path to PR and citizenship. I genuinely love the culture, and I'm already learning the language.</p>
+          <p>It's also a huge, diverse market (B2B, B2B2C, B2C) with incredible design and engineering talent. My passion sits squarely in B2B: interaction-heavy, engineering-heavy products. I've spent my career designing for complex enterprise workflows, and that's exactly where I want to keep building.</p>
+        </div>
       </div>
     </div>
 
