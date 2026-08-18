@@ -609,6 +609,7 @@ body.page-why .connect { text-align: center; display: flex; flex-direction: colu
   .hero-intro-wrap { display: block; position: relative; overflow: hidden; }
 
   .flag-splash {
+    display: block;
     position: absolute;
     inset: 0;
     left: 50%;
