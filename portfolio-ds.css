@@ -485,10 +485,9 @@ footer {
 .hero-block-copy { display: flex; flex-direction: column; gap: var(--space-4); padding-top: var(--space-1); }
 .hero-block p { font-size: var(--font-size-16); color: var(--color-text-secondary); line-height: var(--line-height-loose); max-width: 420px; }
 
-/* Mobile-only flag splash — collapses to nothing on desktop/tablet
-   (.hero-intro-wrap becomes a no-op, .flag-splash stays hidden). Full
-   behavior is defined in §6 RESPONSIVE, ≤600px only. */
-.hero-intro-wrap { display: contents; }
+/* Mobile-only flag banner — hidden on desktop/tablet. A permanent full-bleed
+   photo with a dark overlay present from the start; only the diagonal shine
+   sweep animates (see §6 RESPONSIVE, ≤600px only). */
 .flag-splash { display: none; }
 
 @keyframes flag-shine {
@@ -496,14 +495,8 @@ footer {
   to   { background-position: 120% 120%; }
 }
 
-@keyframes hero-rise {
-  from { transform: translateY(100%); }
-  to   { transform: translateY(0); }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .flag-splash { display: none !important; }
-  body.page-why .hero-block { animation: none !important; transform: none !important; }
+  .flag-splash::after { animation: none !important; display: none; }
 }
 
 /* — Why Germany: reason cards — */
@@ -603,21 +596,16 @@ body.page-why .connect { text-align: center; display: flex; flex-direction: colu
   body.page-why .stat-row { grid-template-columns: 1fr; }
   body.page-why .culture-grid { grid-template-columns: 1fr; }
 
-  /* Flag splash intro (mobile only) — full-bleed sky gradient + flag with a
-     1s diagonal shine sweep, holds for 0.5s, then the hero content rises up
-     from below and covers it. See §7 for keyframes. */
-  .hero-intro-wrap { display: block; position: relative; overflow: hidden; }
-
+  /* Flag banner (mobile only) — permanent full-bleed flag photo with a dark
+     overlay present from the start; only the diagonal shine sweep animates. */
   .flag-splash {
     display: block;
-    position: absolute;
-    inset: 0;
+    position: relative;
     left: 50%;
     width: 100vw;
+    height: 42vh;
     transform: translateX(-50%);
     overflow: hidden;
-    z-index: 1;
-    background: linear-gradient(180deg, #6EC1F2 0%, #BFE3F7 55%, #EFF9FD 100%);
   }
 
   .flag-splash-img {
@@ -630,13 +618,13 @@ body.page-why .connect { text-align: center; display: flex; flex-direction: colu
     object-position: center 35%;
   }
 
-  /* Bottom-edge shadow — separates the banner from the content below */
+  /* Dark overlay — present immediately, not animated in */
   .flag-splash::before {
     content: '';
     position: absolute;
     inset: 0;
     z-index: 1;
-    background: linear-gradient(to bottom, transparent 65%, rgba(0, 0, 0, 0.4) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.55) 100%);
     pointer-events: none;
   }
 
@@ -645,18 +633,11 @@ body.page-why .connect { text-align: center; display: flex; flex-direction: colu
     position: absolute;
     inset: 0;
     z-index: 2;
-    background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.6) 50%, transparent 65%);
+    background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.5) 50%, transparent 65%);
     background-size: 300% 300%;
     background-position: -120% -120%;
     animation: flag-shine 1s ease-out forwards;
     pointer-events: none;
-  }
-
-  body.page-why .hero-block {
-    position: relative;
-    z-index: 2;
-    background: var(--color-bg-canvas);
-    animation: hero-rise 0.7s ease 1.5s both;
   }
 }
 
