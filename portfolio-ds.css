@@ -551,7 +551,7 @@ footer {
 .stat-label { font-size: var(--font-size-14); color: var(--color-text-secondary); line-height: var(--line-height-normal); }
 
 /* — Why Germany: culture grid — */
-.culture-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-card-gap-tight); }
+.culture-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-card-gap-tight); }
 .culture-card { background: var(--color-bg-card); border-radius: var(--radius-card); overflow: hidden; }
 .culture-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; background: var(--color-bg-image-placeholder-2); }
 .culture-body { padding: var(--space-2); display: flex; flex-direction: column; gap: 6px; }
