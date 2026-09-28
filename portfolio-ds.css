@@ -382,6 +382,7 @@ footer {
 }
 
 .hero-sub { font-size: var(--font-size-14); color: var(--color-text-tertiary); line-height: var(--line-height-relaxed); }
+.hero-sub strong { color: var(--color-text-primary); font-size: var(--font-size-20); font-weight: var(--font-weight-bold); }
 .hero-prev { font-size: var(--font-size-14); color: var(--color-text-tertiary); margin-top: var(--space-4); }
 .hero-prev-companies { color: var(--color-text-primary); font-weight: var(--font-weight-semibold); }
 
