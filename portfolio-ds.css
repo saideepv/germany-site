@@ -385,6 +385,18 @@ footer {
 .hero-prev { font-size: var(--font-size-14); color: var(--color-text-tertiary); margin-top: var(--space-4); }
 .hero-prev-companies { color: var(--color-text-primary); font-weight: var(--font-weight-semibold); }
 
+.home-facts {
+  max-width: 1120px;
+  margin: 0 auto var(--space-10);
+  padding: 0 var(--space-page-margin);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-card-gap-tight);
+}
+.home-fact { background: var(--color-bg-card); padding: var(--space-3); min-height: 112px; }
+.home-fact h2 { font-size: var(--font-size-16); font-weight: var(--font-weight-bold); line-height: var(--line-height-snug); margin-bottom: var(--space-1); }
+.home-fact p { font-size: var(--font-size-16); color: var(--color-text-secondary); line-height: var(--line-height-relaxed); }
+
 .hero-photo {
   width: 28%;
   flex-shrink: 0;
@@ -588,6 +600,8 @@ body.page-why .connect { text-align: center; display: flex; flex-direction: colu
   body.page-home .hero { padding: var(--space-9) var(--space-page-margin-tablet) var(--space-6); }
   body.page-home .hero h1 { font-size: var(--font-size-40); }
   body.page-home .hero-photo { width: 36%; }
+  body.page-home .home-facts { grid-template-columns: 1fr 1fr; padding: 0 var(--space-page-margin-tablet); }
+  body.page-home .home-fact:last-child { grid-column: 1 / -1; }
   body.page-home .section { padding: var(--space-6) var(--space-page-margin-tablet); }
   body.page-home .work-grid { grid-template-columns: 1fr; gap: var(--space-3); }
   body.page-home .why-grid { grid-template-columns: 1fr; }
@@ -619,6 +633,8 @@ body.page-why .connect { text-align: center; display: flex; flex-direction: colu
   body.page-home .hero { padding: var(--space-5) var(--space-page-margin-mobile) var(--space-4); flex-direction: column-reverse; }
   body.page-home .hero-photo { width: 100%; aspect-ratio: 16/9; }
   body.page-home .hero h1 { font-size: var(--font-size-30); }
+  body.page-home .home-facts { grid-template-columns: 1fr; padding: 0 var(--space-page-margin-mobile); gap: var(--space-2); }
+  body.page-home .home-fact:last-child { grid-column: auto; }
   body.page-home .section { padding: var(--space-5) var(--space-page-margin-mobile); }
   body.page-home .work-card { flex-direction: column; }
   body.page-home .work-card-image { width: 100%; height: 180px; }
