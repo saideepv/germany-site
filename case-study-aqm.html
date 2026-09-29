@@ -17,11 +17,10 @@
     .deck-title { color: #5d626d; font-size: 13px; }
     .deck { min-height: 0; flex: 1; display: flex; flex-direction: column; padding: 12px clamp(12px, 2.5vw, 36px) 0; }
     .slide-stage { min-height: 0; flex: 1; display: grid; place-items: center; background: #eef1f4; }
-    .slide-frame { display: block; width: 100%; height: 100%; border: 0; background: #fff; }
+    .slide-image { display: block; width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; aspect-ratio: 1400 / 731; background: #fff; }
     .controls { min-height: 68px; flex: 0 0 68px; display: flex; align-items: center; justify-content: center; gap: 18px; }
-    .arrow, .fullscreen { min-width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid #d9dce2; border-radius: 50%; background: #fff; color: #252934; font-size: 22px; cursor: pointer; transition: background .15s ease, border-color .15s ease; }
-    .fullscreen { width: auto; min-width: 42px; padding: 0 14px; border-radius: 22px; font-size: 12px; }
-    .arrow:hover:not(:disabled), .arrow:focus-visible, .fullscreen:hover, .fullscreen:focus-visible { border-color: #aeb3bd; background: #f0f1f3; }
+    .arrow { width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid #d9dce2; border-radius: 50%; background: #fff; color: #252934; font-size: 22px; cursor: pointer; transition: background .15s ease, border-color .15s ease; }
+    .arrow:hover:not(:disabled), .arrow:focus-visible { border-color: #aeb3bd; background: #f0f1f3; }
     .arrow:disabled { color: #aeb3bd; cursor: default; }
     .deck-status { width: min(340px, 42vw); display: grid; gap: 7px; }
     .deck-count { color: #555b66; font-size: 12px; font-variant-numeric: tabular-nums; text-align: center; }
@@ -34,7 +33,6 @@
       .deck { padding: 8px 8px 0; }
       .controls { min-height: 60px; flex-basis: 60px; gap: 10px; }
       .arrow { min-width: 38px; height: 38px; }
-      .fullscreen { height: 38px; padding: 0 10px; }
     }
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
   </style>
@@ -46,7 +44,7 @@
   </header>
   <main class="deck" aria-label="Teradata Active Query Monitoring case study slides">
     <div class="slide-stage" id="slide-stage">
-      <iframe class="slide-frame" id="slide-frame" title="Slide 1: Cover" src="./AQM%20case%20study%20assets/00-cover.pdf#toolbar=0&navpanes=0&scrollbar=0&view=Fit"></iframe>
+      <img class="slide-image" id="slide-image" src="./AQM%20case%20study%20assets/00-cover.png" width="1400" height="731" alt="Slide 1: Cover" fetchpriority="high" />
     </div>
     <nav class="controls" aria-label="Slide navigation">
       <button class="arrow" id="previous" type="button" aria-label="Previous slide" disabled>â€¹</button>
@@ -55,39 +53,38 @@
         <div class="progress" role="progressbar" id="progress" aria-label="Slide progress" aria-valuemin="1" aria-valuemax="24" aria-valuenow="1"><div class="progress-value" id="progress-value"></div></div>
       </div>
       <button class="arrow" id="next" type="button" aria-label="Next slide">â€º</button>
-      <button class="fullscreen" id="fullscreen" type="button" aria-label="View slides full screen">Full screen</button>
     </nav>
   </main>
   <p class="sr-only" id="slide-announcement" aria-live="polite">Slide 1 of 24: Cover</p>
   <script>
     (() => {
       const slides = [
-        ['00-cover.pdf', 'Cover'],
-        ['01-intro.pdf', 'Introduction'],
-        ['02-what-is-td-vcl.pdf', 'What is TD VCL?'],
-        ['03-what-is-aqm.pdf', 'What is AQM?'],
-        ['04-users.pdf', 'Users'],
-        ['05-existing-knowledge.pdf', 'Existing knowledge'],
-        ['06-comp-analysis.pdf', 'Competitive analysis'],
-        ['07-all-main-insights.pdf', 'Main insights'],
-        ['08-nsm.pdf', 'North Star Metric'],
-        ['09-ideations.pdf', 'Ideations'],
-        ['10-old-ui.pdf', 'Existing interface'],
-        ['11-old-ui.pdf', 'Existing interface'],
-        ['12-old-ui.pdf', 'Existing interface'],
-        ['13-ideations.pdf', 'Ideations'],
-        ['14-ideations.pdf', 'Ideations'],
-        ['15-final-solution.pdf', 'Final solution'],
-        ['16-mock-ups.pdf', 'Mock-up'],
-        ['17-mock-ups.pdf', 'Mock-up'],
-        ['18-mock-ups.pdf', 'Mock-up'],
-        ['19-mock-ups.pdf', 'Mock-up'],
-        ['20-mock-ups.pdf', 'Mock-up'],
-        ['21-final-solution.pdf', 'Final solution'],
-        ['22-final-solution.pdf', 'Final solution'],
-        ['23-thank-you.pdf', 'Thank you']
+        ['00-cover.png', 'Cover'],
+        ['01-intro.png', 'Introduction'],
+        ['02-what-is-td-vcl.png', 'What is TD VCL?'],
+        ['03-what-is-aqm.png', 'What is AQM?'],
+        ['04-users.png', 'Users'],
+        ['05-existing-knowledge.png', 'Existing knowledge'],
+        ['06-comp-analysis.png', 'Competitive analysis'],
+        ['07-all-main-insights.png', 'Main insights'],
+        ['08-nsm.png', 'North Star Metric'],
+        ['09-ideations.png', 'Ideations'],
+        ['10-old-ui.png', 'Existing interface'],
+        ['11-old-ui.png', 'Existing interface'],
+        ['12-old-ui.png', 'Existing interface'],
+        ['13-ideations.png', 'Ideations'],
+        ['14-ideations.png', 'Ideations'],
+        ['15-final-solution.png', 'Final solution'],
+        ['16-mock-ups.png', 'Mock-up'],
+        ['17-mock-ups.png', 'Mock-up'],
+        ['18-mock-ups.png', 'Mock-up'],
+        ['19-mock-ups.png', 'Mock-up'],
+        ['20-mock-ups.png', 'Mock-up'],
+        ['21-final-solution.png', 'Final solution'],
+        ['22-final-solution.png', 'Final solution'],
+        ['23-thank-you.png', 'Thank you']
       ];
-      const frame = document.getElementById('slide-frame');
+      const image = document.getElementById('slide-image');
       const previous = document.getElementById('previous');
       const next = document.getElementById('next');
       const count = document.getElementById('deck-count');
@@ -99,8 +96,8 @@
       function show(index) {
         current = Math.max(0, Math.min(slides.length - 1, index));
         const [file, title] = slides[current];
-        frame.src = `./AQM%20case%20study%20assets/${file}#toolbar=0&navpanes=0&scrollbar=0&view=Fit`;
-        frame.title = `Slide ${current + 1}: ${title}`;
+        image.src = `./AQM%20case%20study%20assets/${file}`;
+        image.alt = `Slide ${current + 1}: ${title}`;
         count.textContent = `${String(current + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
         previous.disabled = current === 0;
         next.disabled = current === slides.length - 1;
@@ -111,10 +108,6 @@
 
       previous.addEventListener('click', () => show(current - 1));
       next.addEventListener('click', () => show(current + 1));
-      document.getElementById('fullscreen').addEventListener('click', async () => {
-        if (!document.fullscreenElement) await document.getElementById('slide-stage').requestFullscreen();
-        else await document.exitFullscreen();
-      });
       document.addEventListener('keydown', (event) => {
         if (event.altKey || event.ctrlKey || event.metaKey || event.target.closest('input, textarea, select, [contenteditable="true"]')) return;
         if (event.key === 'ArrowLeft') { event.preventDefault(); show(current - 1); }
