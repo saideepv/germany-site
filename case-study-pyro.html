@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Pyro AI's 21-slide case study: a CRM calling tool designed for PRAJA's Relationship Managers." />
+  <meta name="theme-color" content="#f7f8fa" />
+  <title>Pyro AI Case Study — Saideep</title>
+  <style>
+    :root { color-scheme: light; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #171923; background: #f7f8fa; }
+    * { box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; margin: 0; }
+    body { min-height: 100svh; display: flex; flex-direction: column; overflow: hidden; }
+    .topbar { height: 60px; flex: 0 0 60px; padding: 0 clamp(16px, 3vw, 44px); display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #e6e8ec; background: #fff; }
+    .brand { color: inherit; font-weight: 700; letter-spacing: -.03em; text-decoration: none; }
+    .brand span { margin-left: 4px; color: #747985; font-size: 11px; font-weight: 500; letter-spacing: .04em; }
+    .deck-title { color: #5d626d; font-size: 13px; }
+    .back-link { color: #454a55; font-size: 13px; text-decoration: none; }
+    .back-link:hover, .back-link:focus-visible { color: #111; text-decoration: underline; }
+    .deck { min-height: 0; flex: 1; display: flex; flex-direction: column; padding: 12px clamp(12px, 2.5vw, 36px) 0; }
+    .slide-stage { min-height: 0; flex: 1; display: grid; place-items: center; }
+    .slide-image { display: block; width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; aspect-ratio: 1400 / 731; background: #edf3f5; }
+    .slide-image.is-loading { opacity: .72; }
+    .slide-copy { width: min(100%, 1400px, calc((100svh - 140px) * 1.915)); max-width: 100%; aspect-ratio: 1400 / 731; position: relative; overflow: hidden; background: linear-gradient(115deg, #f8fbfc 0%, #eaf5f9 100%); }
+    .slide-copy-label { position: absolute; top: 7.5%; left: 7%; color: #535963; font-size: clamp(12px, 1.2vw, 18px); }
+    .slide-copy h1 { position: absolute; top: 17%; left: 7%; max-width: 70%; margin: 0; color: #171923; font-size: clamp(38px, 5vw, 82px); font-weight: 700; letter-spacing: -.035em; line-height: 1.15; white-space: pre-line; }
+    .controls { min-height: 68px; flex: 0 0 68px; display: flex; align-items: center; justify-content: center; gap: 18px; }
+    .arrow { width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid #d9dce2; border-radius: 50%; background: #fff; color: #252934; font-size: 22px; cursor: pointer; transition: background .15s ease, border-color .15s ease; }
+    .arrow:hover:not(:disabled), .arrow:focus-visible { border-color: #aeb3bd; background: #f0f1f3; }
+    .arrow:disabled { color: #aeb3bd; cursor: default; }
+    .deck-status { width: min(340px, 42vw); display: grid; gap: 7px; }
+    .deck-count { color: #555b66; font-size: 12px; font-variant-numeric: tabular-nums; text-align: center; }
+    .progress { height: 3px; overflow: hidden; border-radius: 2px; background: #e1e3e8; }
+    .progress-value { width: 4.545%; height: 100%; background: #333945; transition: width .2s ease; }
+    .keyboard-hint { position: fixed; right: 20px; bottom: 19px; color: #858a94; font-size: 11px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    @media (max-width: 640px) {
+      .topbar { height: 52px; flex-basis: 52px; }
+      .deck-title { display: none; }
+      .deck { padding: 8px 8px 0; }
+      .slide-stage { align-items: center; }
+      .slide-copy { width: min(100%, 1400px, calc((100svh - 120px) * 1.915)); }
+      .slide-copy h1 { max-width: 78%; font-size: clamp(34px, 9vw, 58px); }
+      .controls { min-height: 60px; flex-basis: 60px; gap: 12px; }
+      .arrow { width: 38px; height: 38px; }
+      .keyboard-hint { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./index.html">Saideep<span>DE</span></a>
+    <span class="deck-title">Pyro AI · PRAJA — case study</span>
+    <a class="back-link" href="./index.html">← Back to work</a>
+  </header>
+
+  <main class="deck" aria-label="Pyro AI case study slides">
+    <div class="slide-stage" id="slide-stage" aria-live="polite">
+      <img class="slide-image is-loading" id="slide-image" src="./Pyro%20case%20study%20assets/Intro.png" width="1400" height="731" alt="Slide 1: About the project and case study contents" fetchpriority="high" />
+      <div class="slide-copy" id="slide-copy" hidden>
+        <span class="slide-copy-label" id="slide-copy-label">Impact</span>
+        <h1 id="slide-copy-heading">Using UI components to solve the problem</h1>
+      </div>
+    </div>
+    <nav class="controls" aria-label="Slide navigation">
+      <button class="arrow" id="previous" type="button" aria-label="Previous slide" disabled>‹</button>
+      <div class="deck-status">
+        <span class="deck-count" id="deck-count">01 / 21</span>
+        <div class="progress" role="progressbar" id="progress" aria-label="Slide progress" aria-valuemin="1" aria-valuemax="21" aria-valuenow="1"><div class="progress-value" id="progress-value"></div></div>
+      </div>
+      <button class="arrow" id="next" type="button" aria-label="Next slide">›</button>
+    </nav>
+  </main>
+  <p class="keyboard-hint" aria-hidden="true">Use ← and → to move between slides</p>
+  <p class="sr-only" id="slide-announcement" aria-live="polite">Slide 1 of 21</p>
+
+  <script>
+    (() => {
+      const slides = [
+        { file: 'Intro.png', alt: 'About the project: custom CRM calling tool for PRAJA relationship managers, with the case study contents and impact.' },
+        { file: '01 — Branding & Design System.png', alt: 'Section 1: Branding and design system.' },
+        { file: 'Problem.png', alt: 'How it started: the original Pyro site and the lead list they were trying to build.' },
+        { file: 'Inspirations.png', alt: 'Inspirations from data-heavy office tools including Salesforce, Flexport, ServiceNow, and Uber Freight.' },
+        { file: 'Foundations — Color, Type, Spacing.png', alt: 'Color foundations: black-first palette, Georgia and IBM Plex Sans typography, and an 8-point spacing grid.' },
+        { file: 'Rationale— Color, Type, Spacing.png', alt: 'Rationale: semantic token names, WCAG AAA contrast, variable-driven theming, and a global-ready typeface.' },
+        { file: 'Theming— Buttons, Navigation, A11Y.png', alt: 'Theming: one variable binding supports complete light and dark experiences.' },
+        { file: 'Claude Screenshot.png', alt: 'Claude Desktop: using an AI co-pilot to build and document the design system.' },
+        { file: 'Components — Buttons, Navigation, A11Y.png', alt: 'Design-system components including buttons, body headers, tables, and their configurable variants.' },
+        { file: 'Main struture.png', alt: 'Structure of the tools: layer 1 categories stay in left navigation while the selected information uses the main workspace.' },
+        { file: 'Feature.png', alt: 'Using UI components to solve the problem for PRAJA.' },
+        { file: 'Context.png', alt: 'Context: PRAJA is Pyro AI’s first client; its Relationship Managers drive daily lead calls and revenue.' },
+        { file: 'Existing.png', alt: 'Existing competitor: Floww lead list, lead details, and post-call feedback screens, followed by the goal to make calling more efficient.' },
+        { file: 'Research.png', alt: 'Research: on-site RM shadowing, the Floww.AI tool, and team WhatsApp briefings.' },
+        { file: 'Key Insights.png', alt: 'Three research insights: information overload during calls, no live progress counter, and too many steps after each call.' },
+        { label: 'Impact', heading: 'Using UI components to solve\nthe problem', alt: 'Impact: using UI components to solve the problem.' },
+        { file: 'Screens of Praja from Pyro design system-1.png', alt: 'Feature mock-ups: two versions of the Relationship Manager lead-calling screen.' },
+        { file: 'Screens of Praja from Pyro design system-2.png', alt: 'Feature mock-ups: call-back scheduling, post-call feedback, and a break timer.' },
+        { file: 'Dashboard.png', alt: 'Admin view: dashboard for the Head of Relationship Managers, with scrollable dashboard content.' },
+        { file: 'Final Impact.png', alt: 'Outcome: 50% increase in lead conversion, creating more revenue for Praja with the same time and team.' },
+        { file: 'Thank you.png', alt: 'Final slide: Thank You.' }
+      ];
+      const base = './Pyro%20case%20study%20assets/';
+      const image = document.getElementById('slide-image');
+      const slideCopy = document.getElementById('slide-copy');
+      const slideCopyLabel = document.getElementById('slide-copy-label');
+      const slideCopyHeading = document.getElementById('slide-copy-heading');
+      const previous = document.getElementById('previous');
+      const next = document.getElementById('next');
+      const count = document.getElementById('deck-count');
+      const progress = document.getElementById('progress');
+      const progressValue = document.getElementById('progress-value');
+      const announcement = document.getElementById('slide-announcement');
+      const loaded = new Set([0]);
+      let current = 0;
+
+      image.addEventListener('load', () => image.classList.remove('is-loading'));
+      image.addEventListener('error', () => image.classList.remove('is-loading'));
+      if (image.complete) image.classList.remove('is-loading');
+
+      function preload(index) {
+        if (index < 0 || index >= slides.length || loaded.has(index) || !slides[index].file) return;
+        loaded.add(index);
+        const warm = new Image();
+        warm.decoding = 'async';
+        warm.src = base + encodeURIComponent(slides[index].file).replaceAll('%2F', '/');
+      }
+
+      function show(index) {
+        current = Math.max(0, Math.min(slides.length - 1, index));
+        const slide = slides[current];
+        if (slide.file) {
+          slideCopy.hidden = true;
+          image.hidden = false;
+          image.classList.add('is-loading');
+          image.src = base + encodeURIComponent(slide.file).replaceAll('%2F', '/');
+          image.alt = `Slide ${current + 1}: ${slide.alt}`;
+        } else {
+          image.hidden = true;
+          image.classList.remove('is-loading');
+          slideCopyLabel.textContent = slide.label;
+          slideCopyHeading.textContent = slide.heading;
+          slideCopy.setAttribute('aria-label', slide.alt);
+          slideCopy.hidden = false;
+        }
+        count.textContent = `${String(current + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
+        previous.disabled = current === 0;
+        next.disabled = current === slides.length - 1;
+        const percent = ((current + 1) / slides.length) * 100;
+        progressValue.style.width = `${percent}%`;
+        progress.setAttribute('aria-valuenow', String(current + 1));
+        announcement.textContent = `Slide ${current + 1} of ${slides.length}. ${slide.alt}`;
+        preload(current + 1);
+      }
+
+      previous.addEventListener('click', () => show(current - 1));
+      next.addEventListener('click', () => show(current + 1));
+      document.addEventListener('keydown', (event) => {
+        if (event.altKey || event.ctrlKey || event.metaKey || event.target.closest('input, textarea, select, [contenteditable="true"]')) return;
+        if (event.key === 'ArrowLeft') { event.preventDefault(); show(current - 1); }
+        if (event.key === 'ArrowRight') { event.preventDefault(); show(current + 1); }
+        if (event.key === 'Home') { event.preventDefault(); show(0); }
+        if (event.key === 'End') { event.preventDefault(); show(slides.length - 1); }
+      });
+
+      let touchStartX = null;
+      document.getElementById('slide-stage').addEventListener('touchstart', (event) => { touchStartX = event.changedTouches[0].clientX; }, { passive: true });
+      document.getElementById('slide-stage').addEventListener('touchend', (event) => {
+        if (touchStartX === null) return;
+        const delta = event.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(delta) > 48) show(current + (delta < 0 ? 1 : -1));
+        touchStartX = null;
+      }, { passive: true });
+
+      if ('requestIdleCallback' in window) requestIdleCallback(() => preload(1));
+      else window.setTimeout(() => preload(1), 250);
+    })();
+  </script>
+</body>
+</html>
