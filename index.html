@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="portfolio-ds.css" />
+  <link rel="stylesheet" href="home-scroll-cue.css" />
   <script src="cursor.js" defer></script>
 </head>
 <body class="page-home">
@@ -42,10 +43,14 @@
     <div class="hero-photo">
       <img src="https://saideepv.github.io/Coomon-portfolios-design-system/assets/Common%20Images/DP.png" alt="Saideep Vangala" />
     </div>
+    <a class="scroll-cue" href="#quick-facts" aria-label="Scroll down to explore the portfolio">
+      <span class="scroll-mouse" aria-hidden="true"><span class="scroll-mouse-wheel"></span></span>
+      <span class="scroll-cue-label" aria-hidden="true">Scroll to explore</span>
+    </a>
   </div>
 
   <!-- QUICK FACTS -->
-  <section class="home-facts" aria-label="Quick facts">
+  <section class="home-facts" id="quick-facts" aria-label="Quick facts">
     <article class="home-fact">
       <h2>Bachelors in Design, 2018</h2>
       <p>IIT Guwahati, India</p>
