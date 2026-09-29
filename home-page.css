@@ -1,6 +1,6 @@
 body.page-home .hero {
   position: relative;
-  min-height: calc(100svh - 80px);
+  min-height: calc(100svh - 160px);
 }
 
 body.page-home .hero-sub strong { font-size: var(--font-size-28); }
