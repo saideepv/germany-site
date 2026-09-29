@@ -3,7 +3,10 @@ body.page-home .hero {
   min-height: calc(100svh - 92px);
 }
 
-body.page-home .hero-sub strong { font-size: var(--font-size-28); }
+body.page-home .hero-sub strong {
+  margin-left: var(--space-1);
+  font-size: var(--font-size-28);
+}
 
 .scroll-cue {
   position: absolute;
