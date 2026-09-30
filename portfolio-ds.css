@@ -514,9 +514,9 @@ footer {
 .book-title { font-size: var(--font-size-14); font-weight: var(--font-weight-medium); color: var(--color-text-primary); }
 
 /* — About: hobbies — */
-.hobbies-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-card-gap-cozy); }
+.hobbies-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-card-gap-cozy); max-width: 1440px; margin-inline: auto; }
 .hobby-item { display: flex; flex-direction: column; gap: var(--space-1); }
-.hobby-img { border-radius: var(--radius-card); overflow: hidden; background: var(--color-bg-card); aspect-ratio: 4/3; max-height: 220px; padding: var(--space-2); }
+.hobby-img { border-radius: var(--radius-card); overflow: hidden; background: var(--color-bg-card); height: 320px; padding: var(--space-2); }
 .hobby-img img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: var(--radius-sm); }
 .hobby-tag { font-size: var(--font-size-15); color: var(--color-text-tertiary); }
 .hobby-title { font-size: var(--font-size-16); font-weight: var(--font-weight-medium); color: var(--color-text-primary); }
@@ -646,6 +646,7 @@ body.page-why .connect { text-align: center; display: flex; flex-direction: colu
   body.page-why .page { padding: var(--space-5) var(--space-page-margin-mobile); gap: var(--space-6); }
   body.page-about .reading-grid { grid-template-columns: 1fr; }
   body.page-about .hobbies-grid { grid-template-columns: 1fr; }
+  body.page-about .hobby-img { height: 280px; }
 
   .display-heading { font-size: var(--font-size-56); }
   body.page-why .reason-grid { grid-template-columns: 1fr; }
