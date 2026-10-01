@@ -367,7 +367,7 @@ footer {
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 10px; /* micro, intentionally off-grid */
+  gap: var(--space-10);
   animation: hero-entrance 0.6s ease-out both;
 }
 
@@ -599,6 +599,7 @@ body.page-why .connect { text-align: center; display: flex; flex-direction: colu
   footer { padding: var(--space-3) var(--space-page-margin-tablet); }
 
   body.page-home .hero { padding: var(--space-9) var(--space-page-margin-tablet) var(--space-6); }
+  body.page-home .hero { gap: var(--space-5); }
   body.page-home .hero h1 { font-size: var(--font-size-40); }
   body.page-home .hero-photo { width: 36%; }
   body.page-home .home-facts { grid-template-columns: 1fr 1fr; padding: 0 var(--space-page-margin-tablet); }
@@ -631,7 +632,7 @@ body.page-why .connect { text-align: center; display: flex; flex-direction: colu
   body { padding-bottom: calc(44px + env(safe-area-inset-bottom, 0px)); }
   footer { padding: var(--space-2) var(--space-page-margin-mobile); }
 
-  body.page-home .hero { padding: var(--space-5) var(--space-page-margin-mobile) var(--space-4); flex-direction: column-reverse; }
+  body.page-home .hero { padding: var(--space-5) var(--space-page-margin-mobile) var(--space-4); flex-direction: column-reverse;  gap: var(--space-4); }
   body.page-home .hero-photo { width: 100%; aspect-ratio: 16/9; }
   body.page-home .hero h1 { font-size: var(--font-size-30); }
   body.page-home .home-facts { grid-template-columns: 1fr; padding: 0 var(--space-page-margin-mobile); gap: var(--space-2); }
