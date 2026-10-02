@@ -367,7 +367,7 @@ footer {
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
-  gap: var(--space-10);
+  gap: var(--space-13);
   animation: hero-entrance 0.6s ease-out both;
 }
 
