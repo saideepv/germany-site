@@ -33,6 +33,23 @@
   --color-ink-rgb:  10, 10, 20;
   --color-black:    #000000;
 
+  /* Brand palette - Ink Blue. Scale 5 is the primary brand color. */
+  --color-ink-blue-0:   #FFFFFF;
+  --color-ink-blue-0-5: #E9EDF0;
+  --color-ink-blue-1:   #D3DBE1;
+  --color-ink-blue-1-5: #BDCAD2;
+  --color-ink-blue-2:   #A7B8C3;
+  --color-ink-blue-3:   #7B94A6;
+  --color-ink-blue-4:   #4F7188;
+  --color-ink-blue-5:   #234D6A;
+  --color-ink-blue-6:   #1C3E55;
+  --color-ink-blue-7:   #152E40;
+  --color-ink-blue-8:   #0E1F2A;
+  --color-ink-blue-8-5: #0B1720;
+  --color-ink-blue-9:   #070F15;
+  --color-ink-blue-9-5: #04080B;
+  --color-ink-blue-10:  #000000;
+
   --font-sans:  'IBM Plex Sans', sans-serif;
   --font-serif: Georgia, serif;
 
@@ -84,6 +101,22 @@
      it the next time those specific rules get touched. */
 
   --color-border: var(--color-gray-150);
+
+  /* Ink Blue semantic roles - default is #234D6A; inverse supports contrast. */
+  --color-bg-ink-blue-subtle:  var(--color-ink-blue-0-5);
+  --color-bg-ink-blue-default: var(--color-ink-blue-5);
+  --color-bg-ink-blue-strong:  var(--color-ink-blue-7);
+  --color-bg-ink-blue-inverse: var(--color-ink-blue-0);
+
+  --color-text-ink-blue-subtle:  var(--color-ink-blue-4);
+  --color-text-ink-blue-default: var(--color-ink-blue-5);
+  --color-text-ink-blue-strong:  var(--color-ink-blue-7);
+  --color-text-ink-blue-inverse: var(--color-ink-blue-0);
+
+  --color-border-ink-blue-subtle:  var(--color-ink-blue-1);
+  --color-border-ink-blue-default: var(--color-ink-blue-4);
+  --color-border-ink-blue-strong:  var(--color-ink-blue-5);
+  --color-border-ink-blue-inverse: var(--color-ink-blue-2);
   --shadow-mobile-nav: 0 -2px 8px rgba(0, 0, 0, 0.06);
 
   --space-page-margin:        var(--space-12);
@@ -116,6 +149,22 @@ a { text-decoration: none; color: inherit; }
 
 
 /* ── 3. ATOMS ──────────────────────────────────────────────────────────── */
+
+/* Ink Blue utilities - pair background, text, and border roles as needed. */
+.bg-inkBlue-subtle  { background-color: var(--color-bg-ink-blue-subtle); }
+.bg-inkBlue-default { background-color: var(--color-bg-ink-blue-default); }
+.bg-inkBlue-strong  { background-color: var(--color-bg-ink-blue-strong); }
+.bg-inkBlue-inverse { background-color: var(--color-bg-ink-blue-inverse); }
+
+.text-inkBlue-subtle  { color: var(--color-text-ink-blue-subtle); }
+.text-inkBlue-default { color: var(--color-text-ink-blue-default); }
+.text-inkBlue-strong  { color: var(--color-text-ink-blue-strong); }
+.text-inkBlue-inverse { color: var(--color-text-ink-blue-inverse); }
+
+.border-inkBlue-subtle  { border-color: var(--color-border-ink-blue-subtle); }
+.border-inkBlue-default { border-color: var(--color-border-ink-blue-default); }
+.border-inkBlue-strong  { border-color: var(--color-border-ink-blue-strong); }
+.border-inkBlue-inverse { border-color: var(--color-border-ink-blue-inverse); }
 
 /* Logo / wordmark */
 .nav-logo {
