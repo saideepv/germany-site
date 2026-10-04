@@ -433,10 +433,7 @@ footer {
   display: flex;
   flex-direction: row;
   cursor: pointer;
-  transition: opacity var(--ease-standard-md);
 }
-
-.work-card:hover { opacity: 0.85; }
 
 .work-card-image { width: 42%; flex-shrink: 0; overflow: hidden; background: var(--color-bg-image-placeholder); }
 .work-card-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
